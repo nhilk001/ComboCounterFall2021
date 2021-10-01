@@ -251,4 +251,5 @@ public class Main {
     public static boolean doneFlag = false;
     public static boolean sidebarOpen = false;
     public static boolean countDown = false ;
+    public static Database db = new Database();
 }
