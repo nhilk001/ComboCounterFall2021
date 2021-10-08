@@ -14,8 +14,8 @@ public class LoginPanel extends javax.swing.JPanel {
     public LoginPanel() {
         initComponents();
     }
-    
-    boolean hiding = false ;
+
+    boolean hiding = false;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -32,6 +32,7 @@ public class LoginPanel extends javax.swing.JPanel {
         LogInButton = new javax.swing.JButton();
         PasswordField = new javax.swing.JPasswordField();
         HidePassword = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 55));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -74,7 +75,7 @@ public class LoginPanel extends javax.swing.JPanel {
                 LogInButtonMouseClicked(evt);
             }
         });
-        add(LogInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 550, 150, 40));
+        add(LogInButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 540, 150, 40));
 
         PasswordField.setBackground(new java.awt.Color(0, 0, 55));
         PasswordField.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -91,44 +92,58 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
         add(HidePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 30, 30));
+
+        jButton1.setText("jButton1");
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpButtonMouseClicked
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new RegisterPanel());
-        Frame.setSize(768,1024);
+        Frame.setSize(768, 1024);
         Frame.setResizable(false);
         Frame.repaint();
         Frame.revalidate();
     }//GEN-LAST:event_SignUpButtonMouseClicked
 
     private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
-        Main.setup(2);
+        
+        String username = EmailField.getText();
+        char[] passwordChar = PasswordField.getPassword();
+        String password = "";
+        for (int i = 0; i < passwordChar.length; i++) {
+            password += passwordChar[i];
+        }
+        System.out.println(username+ " "+ password);
+        if(Main.db.loginUser(username, password) == 1){
+            Main.setup(2);
+        }
+        else{
+            //TODO: reject user
+        }
     }//GEN-LAST:event_LogInButtonMouseClicked
 
     private void HidePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HidePasswordMouseClicked
-        if (hiding == false)
-        {
+        if (hiding == false) {
             HidePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png")));
             PasswordField.setEchoChar('*');
             hiding = true;
-        }
-        else if (hiding == true)
-        {
+        } else if (hiding == true) {
             HidePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png")));
-            PasswordField.setEchoChar((char)0);
+            PasswordField.setEchoChar((char) 0);
             hiding = false;
         }
-            
+
     }//GEN-LAST:event_HidePasswordMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel ComboCounterTitle;
-    private javax.swing.JTextField EmailField;
+    public javax.swing.JTextField EmailField;
     private javax.swing.JLabel HidePassword;
     private javax.swing.JButton LogInButton;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SignUpButton;
+    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

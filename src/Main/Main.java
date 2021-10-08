@@ -23,6 +23,7 @@ import javax.swing.JFrame;
 public class Main {
    public static JFrame Frame = new JFrame();
    static ArrayList<Activity> activityList = new ArrayList<Activity>();
+   public static String username;
     public static void main(String [] args){
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new FirstPage());
@@ -251,4 +252,5 @@ public class Main {
     public static boolean doneFlag = false;
     public static boolean sidebarOpen = false;
     public static boolean countDown = false ;
+    public static Database db = new Database();
 }
