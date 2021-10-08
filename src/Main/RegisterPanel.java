@@ -179,6 +179,22 @@ public class RegisterPanel extends javax.swing.JPanel{
     }//GEN-LAST:event_HidePassword2MouseClicked
 
     private void SignUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpButtonMouseClicked
+        String userEmail = EmailField2.getText();
+        char[] passwordChar = PasswordField.getPassword();
+        char[] passwordCheck = ConfirmPasswordField.getPassword();
+        for(int i = 0; i<passwordChar.length; i++){
+            if(passwordChar[i] != passwordCheck[i]){
+                //TODO: make this more informative
+                System.out.println("ERROR");
+                Main.transitionToPage(2);//return here to try again
+                
+            }
+        }
+        String password = "";
+        for (int i = 0; i < passwordChar.length; i++) {
+            password += passwordChar[i];
+        }
+        Main.db.registerUser(userEmail, password);
         Main.setup(2);
     }//GEN-LAST:event_SignUpButtonMouseClicked
 
