@@ -42,7 +42,7 @@ public class Database {
      * @return 1 for user and pass correct 0 if not
      */
     public int loginUser(String username, String password) {
-        String query = "SELECT username FROM login WHERE username = " + username + "AND password = " + password + ";";
+        String query = "SELECT username FROM login WHERE username = " + username + " AND password = " + password;
 
         try ( Statement stmt = conn.createStatement()) {
             ResultSet rs = stmt.executeQuery(query);
