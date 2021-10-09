@@ -105,7 +105,10 @@ public class LoginPanel extends javax.swing.JPanel {
         Frame.repaint();
         Frame.revalidate();
     }//GEN-LAST:event_SignUpButtonMouseClicked
-
+    /*
+    login logic 
+    
+    */
     private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
         
         String username = EmailField.getText();
@@ -116,6 +119,7 @@ public class LoginPanel extends javax.swing.JPanel {
         }
         System.out.println(username+ " "+ password);
         if(Main.db.loginUser(username, password) == 1){
+            Main.username = username;
             Main.setup(2);
         }
         else{
