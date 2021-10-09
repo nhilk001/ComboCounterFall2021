@@ -2,6 +2,9 @@ package Modes;
 
 import Main.Main;
 import static java.lang.Thread.sleep;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Arrays;
 import java.util.Random;
 import javax.swing.JFrame;
@@ -11,11 +14,11 @@ import javax.swing.JOptionPane;
  * @author Jonathan Zamora
  */
 public final class ForceModePanel extends javax.swing.JPanel {
-    
+
     // Declaring vars
     int timerMin = 0;
     int timerSec = 0;
-    int forceGoal ;
+    int forceGoal;
     int playerNum;
     boolean countDown = true;
     boolean paused = true;
@@ -23,90 +26,78 @@ public final class ForceModePanel extends javax.swing.JPanel {
     int totalForce = 0;
     boolean start;
     private int ms;
-    private int second; 
+    private int second;
     private int minute;
-        
+
     /**
      * Initiates TimedModePanel components
+     *
      * @param timerMin
      * @param timerSec
      */
-   
-    
     /**
      * Updates the timer text
+     *
      * @param forceGoal
      */
     //public void update()
     //{
-      //  String frcGoal = String.format("%02d", forceGoal);
-        //ForceGoal.setText(frcGoal);
+    //  String frcGoal = String.format("%02d", forceGoal);
+    //ForceGoal.setText(frcGoal);
     //}
-     public ForceModePanel(boolean multiplayer, int forceGoal, int timerMin, int timerSec) 
-    {
+    public ForceModePanel(boolean multiplayer, int forceGoal, int timerMin, int timerSec) {
         initComponents();
-        
-        if(multiplayer)
-        {
+
+        if (multiplayer) {
             playerNum = Main.currentPlayer;
-            int[] randNumbs = new int [40];
+            int[] randNumbs = new int[40];
             generateRandNums(8000, randNumbs);
-            
-            if(playerNum == 1)
-            {
-               playerName.setText(Main.name1);
-               ForceGoal.setText(String.valueOf(randNumbs));
-               ForceGoal.setText(Main.score1);
-            }
-            else if (playerNum == 2)
-            {
-               playerName.setText(Main.name2);
-            }
-            else if(playerNum == 3)
-            {
+
+            if (playerNum == 1) {
+                playerName.setText(Main.name1);
+                ForceGoal.setText(String.valueOf(randNumbs));
+                ForceGoal.setText(Main.score1);
+            } else if (playerNum == 2) {
+                playerName.setText(Main.name2);
+            } else if (playerNum == 3) {
                 playerName.setText(Main.name3);
-            }
-            else if(playerNum == 4)
-            {
+            } else if (playerNum == 4) {
                 playerName.setText(Main.name4);
-            }
-            else if(playerNum == 5)
-            {
+            } else if (playerNum == 5) {
                 playerName.setText(Main.name5);
-            }
-            else if(playerNum == 6)
-            {
+            } else if (playerNum == 6) {
                 playerName.setText(Main.name6);
             }
-            
+
         }
-        this.forceGoal = forceGoal ;
+        this.forceGoal = forceGoal;
         String goal = String.valueOf(forceGoal);
         this.timerMin = timerMin;
         this.timerSec = timerSec;
         update();
-        
+
         // Setting states
-       SideBar.setVisible(false);
-       NextPlayer.setVisible(true);
-       PreviousPlayer.setVisible(false);
-       ForceGoal2.setText(goal);
+        SideBar.setVisible(false);
+        NextPlayer.setVisible(true);
+        PreviousPlayer.setVisible(false);
+        ForceGoal2.setText(goal);
     }
-    public static int[] generateRandNums(int max, int[] randNums){
+
+    public static int[] generateRandNums(int max, int[] randNums) {
         Random r = new Random();
-        for(int i = 0; i < randNums.length; i++){
+        for (int i = 0; i < randNums.length; i++) {
             randNums[i] = r.nextInt(max) + 1000;
         }
         Arrays.sort(randNums);
         return randNums;
     }
-      public void update()
-    {
+
+    public void update() {
         String minute_str = String.format("%02d", timerMin);
         String second_str = String.format("%02d", timerSec);
         timer.setText(minute_str + ":" + second_str);
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -428,37 +419,36 @@ public final class ForceModePanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void PlayPauseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlayPauseButtonMouseClicked
-        if (paused == true)
-        {
-            int[] randNumbs = new int [40];
+        if (paused == true) {
+            int[] randNumbs = new int[40];
             generateRandNums(8000, randNumbs);
             paused = false;
             PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pauseIcon.png")));
             start = true;
             Thread th;
 
-            th = new Thread(){
+            th = new Thread() {
                 @Override
-                public void run(){
-                    while(start == true){
-                        try{
+                public void run() {
+                    while (start == true) {
+                        try {
                             sleep(10);
                             ms++;
-                            if(ms == 100){
+                            if (ms == 100) {
                                 ForceGoal.setText(String.valueOf(randNumbs[second]));
                                 second++;
                                 ms = 0;
                             }
-                            if (second == 60){
+                            if (second == 60) {
                                 minute++;
                                 second = 0;
-                            } 
+                            }
                             String minute_str = String.format("%02d", minute);
                             String second_str = String.format("%02d", second);
                             String ms_str = String.format("%02d", ms);
                             timer.setText(minute_str + ":" + second_str + "." + ms_str);
-                            
-                           /* timerSec-= 1;
+
+                            /* timerSec-= 1;
                             
                             // Increases Total Force randomly
                             if (timerSec % 2 == 0)
@@ -479,16 +469,14 @@ public final class ForceModePanel extends javax.swing.JPanel {
                                 return;
                             }*/
                             //update();
-                        }catch(InterruptedException e){
+                        } catch (InterruptedException e) {
                             System.out.println("Error");
                         }
                     }
                 }
             };
             th.start();
-        }
-        else if (paused == false)
-        {
+        } else if (paused == false) {
             start = false;
             paused = true;
             PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon.png")));
@@ -497,7 +485,7 @@ public final class ForceModePanel extends javax.swing.JPanel {
 
     private void ResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetButtonMouseClicked
         // TODO add your handling code here:
-      
+
     }//GEN-LAST:event_ResetButtonMouseClicked
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
@@ -505,15 +493,12 @@ public final class ForceModePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void SidebarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButtonMouseClicked
-        if (Main.sidebarOpen == false)
-        {
-            SideBar.setVisible(true) ;
-            Main.sidebarOpen = true ;
-        }
-        else if (Main.sidebarOpen == true)
-        {
+        if (Main.sidebarOpen == false) {
+            SideBar.setVisible(true);
+            Main.sidebarOpen = true;
+        } else if (Main.sidebarOpen == true) {
             SideBar.setVisible(false);
-            Main.sidebarOpen = false ;
+            Main.sidebarOpen = false;
         }
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
@@ -540,9 +525,9 @@ public final class ForceModePanel extends javax.swing.JPanel {
 
     private void Settings_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Settings_ButtonMouseClicked
         start = false;
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
+        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)", "Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
-        Main.transitionToPage(3);
+            Main.transitionToPage(3);
     }//GEN-LAST:event_Settings_ButtonMouseClicked
 
     private void About_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_About_ButtonMouseClicked
@@ -571,22 +556,29 @@ public final class ForceModePanel extends javax.swing.JPanel {
     private void NextPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NextPlayerMouseClicked
         // TODO add your handling code here:
         Main.currentPlayer = Main.currentPlayer + 1;
-        if(Main.currentPlayer > Main.playerNum)
-        {
-           Main.multiplayer(playerNum); 
-        }
-        else
-        {
+        if (Main.currentPlayer > Main.playerNum) {
+            Main.multiplayer(playerNum);
+        } else {
             Main.Frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
             //Frame.setResizable(false);
-            Main.Frame.setContentPane(new ForceModePanel(true, Main.currentPlayer, 0,0));
+            Main.Frame.setContentPane(new ForceModePanel(true, Main.currentPlayer, 0, 0));
             Main.Frame.repaint();
-            Main.Frame.revalidate(); 
+            Main.Frame.revalidate();
         }
     }//GEN-LAST:event_NextPlayerMouseClicked
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
         // TODO add your handling code here:
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
+
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime localTime = LocalTime.now();
+        Main.db.insertForceActivity(Main.username , forceGoal, totalForce, 
+                second, minute);
+        //TODO: remove createActivity
+        Main.createActivity(minute, 0, localTime, localDate, "Force Mode",
+                totalForce, forceGoal);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

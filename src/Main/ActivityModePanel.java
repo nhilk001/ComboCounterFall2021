@@ -39,6 +39,8 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     
     /**
      * Adds session information to text area
+     * TODO: change this to use database instead of storing activities as objects
+     *      in the activity class.
      */
     public void update()
     {
@@ -48,6 +50,12 @@ public final class ActivityModePanel extends javax.swing.JPanel {
                     "      Time: " + a.getMin() + " min " + a.getSec() + " sec\n" +
                             "      Score: " + a.getTotalForce() + "\n\n");
         });
+    }
+    /*
+    TODO: Get all activities by username(email)
+    */
+    public void getActivities(String username){
+        
     }
         
     /**

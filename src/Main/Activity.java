@@ -10,9 +10,10 @@ import java.time.LocalTime;
 
 /**
  *
- * @author shamc
+ * @author shamc Lets change this to all come from the database
  */
 public class Activity {
+
     private int min;
     private int sec;
     private LocalTime time;
@@ -20,6 +21,7 @@ public class Activity {
 
     private String mode;
     private int totalForce;
+    private int goalForce;
 
     public Activity(int min, int sec, LocalTime time, LocalDate date, String mode, int totalForce) {
         this.min = min;
@@ -28,6 +30,16 @@ public class Activity {
         this.date = date;
         this.mode = mode;
         this.totalForce = totalForce;
+    }
+
+    public Activity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce) {
+        this.min = timeElapsed;
+        this.sec = 0;
+        this.time = time;
+        this.date = date;
+        this.mode = mode;
+        this.totalForce = totalForce;
+        this.goalForce = goalForce;
     }
 
     public int getMin() {
@@ -61,7 +73,7 @@ public class Activity {
     public void setDate(LocalDate date) {
         this.date = date;
     }
-    
+
     public String getMode() {
         return mode;
     }

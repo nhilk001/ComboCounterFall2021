@@ -1,13 +1,14 @@
 package Main;
 
 import static Main.Main.Frame;
+import java.util.Arrays;
 import javax.swing.JFrame;
 
 /**
  *
  * @author Jonathan Zamora
  */
-public class RegisterPanel extends javax.swing.JPanel{
+public class RegisterPanel extends javax.swing.JPanel {
 
     /**
      * Creates new RegisterPanel
@@ -15,10 +16,10 @@ public class RegisterPanel extends javax.swing.JPanel{
     public RegisterPanel() {
         initComponents();
     }
-    
+
     boolean hiding1 = false;
     boolean hiding2 = false;
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -110,6 +111,11 @@ public class RegisterPanel extends javax.swing.JPanel{
         EmailField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         EmailField3.setText("Age");
         EmailField3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(102, 102, 102)));
+        EmailField3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EmailField3ActionPerformed(evt);
+            }
+        });
         add(EmailField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 590, 90, 50));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -147,65 +153,67 @@ public class RegisterPanel extends javax.swing.JPanel{
     }// </editor-fold>//GEN-END:initComponents
 
     private void HidePasswordMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HidePasswordMouseClicked
-        if (hiding1 == false)
-        {
+        if (hiding1 == false) {
             HidePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png")));
             PasswordField.setEchoChar('*');
             hiding1 = true;
-        }
-        else if (hiding1 == true)
-        {
+        } else if (hiding1 == true) {
             HidePassword.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png")));
-            PasswordField.setEchoChar((char)0);
+            PasswordField.setEchoChar((char) 0);
             hiding1 = false;
         }
 
     }//GEN-LAST:event_HidePasswordMouseClicked
 
     private void HidePassword2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_HidePassword2MouseClicked
-        if (hiding2 == false)
-        {
+        if (hiding2 == false) {
             HidePassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png")));
             ConfirmPasswordField.setEchoChar('*');
             hiding2 = true;
-        }
-        else if (hiding2 == true)
-        {
+        } else if (hiding2 == true) {
             HidePassword2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png")));
-            ConfirmPasswordField.setEchoChar((char)0);
+            ConfirmPasswordField.setEchoChar((char) 0);
             hiding2 = false;
         }
 
     }//GEN-LAST:event_HidePassword2MouseClicked
-
+    /*
+    Register logic 
+     */
     private void SignUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpButtonMouseClicked
         String userEmail = EmailField2.getText();
         char[] passwordChar = PasswordField.getPassword();
         char[] passwordCheck = ConfirmPasswordField.getPassword();
-        for(int i = 0; i<passwordChar.length; i++){
-            if(passwordChar[i] != passwordCheck[i]){
-                //TODO: make this more informative
+        String age = EmailField3.getText();
+        String weight = EmailField1.getText();
+        for (int i = 0; i < passwordChar.length; i++) {
+            if (passwordChar[i] != passwordCheck[i]) {
+                //TODO: make this more error message informative
                 System.out.println("ERROR");
                 Main.transitionToPage(2);//return here to try again
-                
             }
         }
         String password = "";
-        for (int i = 0; i < passwordChar.length; i++) {
+        for(int i = 0; i<passwordChar.length; i++){
             password += passwordChar[i];
         }
-        Main.db.registerUser(userEmail, password);
+        Main.db.registerUser(userEmail, password, age, weight);
+        Main.username = userEmail;
         Main.setup(2);
     }//GEN-LAST:event_SignUpButtonMouseClicked
 
     private void LogInButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_LogInButtonMouseClicked
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new LoginPanel());
-        Frame.setSize(768,1024);
+        Frame.setSize(768, 1024);
         Frame.setResizable(false);
         Frame.repaint();
         Frame.revalidate();
     }//GEN-LAST:event_LogInButtonMouseClicked
+
+    private void EmailField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EmailField3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_EmailField3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
