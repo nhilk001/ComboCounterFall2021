@@ -1,6 +1,13 @@
 package Modes;
 
 import Main.Main;
+import Modes.Setup.ComboModeSetup;
+import static java.lang.Thread.sleep;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Arrays;
+import java.util.Random;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -10,17 +17,70 @@ import Main.Main;
 
 /**
  *
- * @author RezTheCoward
+ * @author John Kelly
  */
 public class ComboModePanel extends javax.swing.JPanel {
-
+    
+    // Declaring vars
+    int timerMin = 0;
+    int timerSec = 0;
+    int initialMin = 0;
+    int initialSec = 0;
+    int playerNum = 2;
+    boolean countDown = false;
+    boolean paused = true;
+    int index = 0;
+    int totalForce = 0;
+    boolean start;
+    String numPunch = String.valueOf(ComboModeSetup.punches);
+    int punchTracker = 0;
+    
+    //store force values matched to each punch for displaying data later
+    int[] punchNum = new int[ComboModeSetup.punches]; 
+                                
+        
     /**
-     * Creates new form ComboScorePanel
+     * Initiates ComboModePanel components
+     * @param timerMin
+     * @param timerSec
      */
-    public ComboModePanel() {
+    public ComboModePanel() 
+    {
         initComponents();
+        jLabel13.setText(numPunch);
+        this.timerMin = 0;
+        this.timerSec = 0;
+        initialMin = 0;
+        initialSec = 0;
+        update();
+        
+        // Setting states
+        //SideBar.setVisible(false);
+        NextPlayer.setVisible(false);
+        PreviousPlayer.setVisible(false);
     }
+    
+    /**
+     * Updates the timer text
+     */
+    public void update()
+    {
+        String minute_str = String.format("%02d", timerMin);
+        String second_str = String.format("%02d", timerSec);
+        timer.setText(minute_str + ":" + second_str);
+    }
+    
+  
 
+    
+    public  int[] generateRandNums(int max, int[] randNums){
+        Random r = new Random();
+        for(int i = 0; i < randNums.length; i++){
+            randNums[i] = r.nextInt(max) + 1000;
+        }
+        Arrays.sort(randNums);
+        return randNums;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -31,19 +91,6 @@ public class ComboModePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton7 = new javax.swing.JButton();
-        jButton7.setOpaque(false);
-        jButton7.setContentAreaFilled(false);
-        //jButton1.setBorderPainted(false);
-        jButton8 = new javax.swing.JButton();
-        jButton8.setOpaque(false);
-        jButton8.setContentAreaFilled(false);
-        //jButton1.setBorderPainted(false);
-        jButton9 = new javax.swing.JButton();
-        jButton9.setOpaque(false);
-        jButton9.setContentAreaFilled(false);
-        //jButton1.setBorderPainted(false);
-        jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -53,15 +100,6 @@ public class ComboModePanel extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -69,6 +107,18 @@ public class ComboModePanel extends javax.swing.JPanel {
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        PlayPauseButton = new javax.swing.JLabel();
+        PreviousPlayer = new javax.swing.JLabel();
+        ResetButton = new javax.swing.JLabel();
+        SaveButton = new javax.swing.JLabel();
+        NextPlayer = new javax.swing.JLabel();
+        timer = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 55));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -77,308 +127,307 @@ public class ComboModePanel extends javax.swing.JPanel {
         jLabel1.setForeground(new java.awt.Color(240, 240, 240));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Combo Mode");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 130, 500, -1));
-
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton7.setForeground(new java.awt.Color(242, 0, 0));
-        jButton7.setText("Stop");
-        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        jButton7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton7ActionPerformed(evt);
-            }
-        });
-        add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 570, 160, 50));
-
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton8.setForeground(new java.awt.Color(21, 140, 75));
-        jButton8.setText("Start");
-        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
-            }
-        });
-        add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 440, 160, 50));
-
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jButton9.setForeground(new java.awt.Color(212, 192, 17));
-        jButton9.setText("Reset");
-        jButton9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 700, 160, 50));
-
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
-            }
-        });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, 50));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 120, 500, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(240, 240, 240));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Hit 5");
         jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 470, 140, 80));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 670, 140, 80));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(240, 240, 240));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Hit 1");
         jLabel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 470, 140, 80));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 350, 140, 80));
 
         jLabel4.setBackground(new java.awt.Color(181, 14, 0));
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(240, 240, 240));
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel4.setText("10");
+        jLabel4.setText("Hit 2");
         jLabel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
         jLabel4.setOpaque(true);
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 470, 140, 80));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 430, 140, 80));
 
         jLabel5.setBackground(new java.awt.Color(212, 192, 17));
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(240, 240, 240));
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel5.setText("40");
+        jLabel5.setText("Hit 3");
         jLabel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
         jLabel5.setOpaque(true);
-        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 470, 140, 80));
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 510, 140, 80));
 
         jLabel6.setBackground(new java.awt.Color(21, 140, 75));
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(240, 240, 240));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel6.setText("100");
+        jLabel6.setText("Hit 4");
         jLabel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
         jLabel6.setOpaque(true);
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 470, 140, 80));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 590, 140, 80));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(240, 240, 240));
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("Hit 6");
         jLabel8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1100, 470, 140, 80));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 350, 140, 80));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(240, 240, 240));
         jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("Hit 7");
         jLabel9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1240, 470, 140, 80));
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 430, 140, 80));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(240, 240, 240));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel10.setText("Hit 8");
+        jLabel10.setText("Hit 10");
         jLabel10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(1380, 470, 140, 80));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 670, 140, 80));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(240, 240, 240));
         jLabel12.setText("Force");
-        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 360, -1, -1));
-
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel13.setText("Time Interval");
-        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 620, -1, -1));
-
-        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel14.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel14.setText("Time: N/A");
-        add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 790, -1, -1));
-
-        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(240, 240, 240));
-        jLabel15.setText("Score: N/A");
-        add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 790, -1, -1));
-
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-punching-bag-50.png"))); // NOI18N
-        jLabel16.setOpaque(true);
-        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 0, 320, -1));
-
-        jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-gear-50.png"))); // NOI18N
-        jLabel17.setOpaque(true);
-        jLabel17.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel17MouseClicked(evt);
-            }
-        });
-        add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 0, 320, -1));
-
-        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-home-50.png"))); // NOI18N
-        jLabel11.setOpaque(true);
-        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 320, -1));
-
-        jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-graph-50.png"))); // NOI18N
-        jLabel18.setOpaque(true);
-        add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 0, 320, -1));
-
-        jLabel19.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-male-user-50.png"))); // NOI18N
-        jLabel19.setOpaque(true);
-        add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(1280, 0, 320, -1));
-
-        jLabel20.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel20.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/icons8-open-door-50.png"))); // NOI18N
-        jLabel20.setOpaque(true);
-        jLabel20.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel20MouseClicked(evt);
-            }
-        });
-        add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(1600, 0, 320, -1));
+        add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
 
         jLabel21.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(240, 240, 240));
         jLabel21.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel21.setText("Time 1");
         jLabel21.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(1310, 550, 140, 50));
+        add(jLabel21, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 510, 140, 80));
 
         jLabel22.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel22.setForeground(new java.awt.Color(240, 240, 240));
         jLabel22.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel22.setText("Time 1");
         jLabel22.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 550, 140, 50));
+        add(jLabel22, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 590, 140, 80));
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel23.setForeground(new java.awt.Color(240, 240, 240));
         jLabel23.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel23.setText("Time 1");
         jLabel23.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 550, 140, 50));
+        add(jLabel23, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 350, 140, 80));
 
         jLabel24.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(240, 240, 240));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel24.setText("Time 1");
+        jLabel24.setText("Time 2");
         jLabel24.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 550, 140, 50));
+        add(jLabel24, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 430, 140, 80));
 
         jLabel25.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel25.setForeground(new java.awt.Color(240, 240, 240));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Time 1");
         jLabel25.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 550, 140, 50));
+        add(jLabel25, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 510, 140, 80));
 
         jLabel26.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel26.setForeground(new java.awt.Color(240, 240, 240));
         jLabel26.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel26.setText("Time 1");
         jLabel26.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 550, 140, 50));
+        add(jLabel26, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 670, 140, 80));
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel27.setForeground(new java.awt.Color(240, 240, 240));
         jLabel27.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel27.setText("Time 1");
         jLabel27.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
-        add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 550, 140, 50));
+        add(jLabel27, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 350, 140, 80));
+
+        jLabel28.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel28.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel28.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel28.setText("Time 1");
+        jLabel28.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
+        add(jLabel28, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 430, 140, 80));
+
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                BackButtonMouseClicked(evt);
+            }
+        });
+        add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        jLabel11.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Hit 8");
+        jLabel11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
+        add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 510, 140, 80));
+
+        jLabel16.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
+        jLabel16.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setText("Hit 9");
+        jLabel16.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(173, 216, 230)));
+        add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 590, 140, 80));
+
+        jPanel3.setBackground(new java.awt.Color(51, 51, 56));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon.png"))); // NOI18N
+        PlayPauseButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PlayPauseButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(PlayPauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 10, 300, 290));
+
+        PreviousPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backPlayerIcon.png"))); // NOI18N
+        jPanel3.add(PreviousPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 10, 80, 80));
+
+        ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/retryIcon.png"))); // NOI18N
+        ResetButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ResetButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(ResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 240, 80, 80));
+
+        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+        });
+        jPanel3.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 240, 80, 80));
+
+        NextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nextPlayerIcon.png"))); // NOI18N
+        jPanel3.add(NextPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 80, 80));
+
+        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 750, 755, 350));
+
+        timer.setFont(new java.awt.Font("Tahoma", 0, 100)); // NOI18N
+        timer.setForeground(new java.awt.Color(240, 240, 240));
+        timer.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        timer.setText("--:--");
+        add(timer, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 500, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(240, 240, 240));
+        jLabel13.setText("Punches");
+        add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 150, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private int minute;
     private int second;
     private int ms;
-    private boolean start;
     
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        ComboModeSetup.punches = 1;
+        Main.setup(1);
+    }//GEN-LAST:event_BackButtonMouseClicked
 
-        start = false;
-    }//GEN-LAST:event_jButton7ActionPerformed
+    private void PlayPauseButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PlayPauseButtonMouseClicked
+      
+        PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/pauseIcon.png")));
+        
+        if (paused == true)
+        {
+            int[] randNumbs = new int [40];
+            generateRandNums(8000, randNumbs);
+            paused = false;
+            
+            start = true;
+            Thread th;
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+            th = new Thread(){
+                @Override
+                public void run(){
+                    while(start == true && (punchTracker < ComboModeSetup.punches)){ //testing purposes
+                        try{
+                            sleep(1000);
+                            timerSec+= 1;
 
-        minute = 0;
-        second = 0;
-        ms = 0;
-        start = true;
-        Thread t = new Thread(){
-            public void run(){
-                while(start == true){
-                    try{
-                        sleep(10);
-                        ms++;
-                        if(ms == 100){
-                            second++;
-                            ms = 0;
+                            // Increases Total Force randomly
+                            if (timerSec % 2 == 0)
+                            {
+                                totalForce += randNumbs[index];
+                                String tf = String.valueOf(totalForce);
+                                jLabel12.setText(tf);
+                                punchNum[punchTracker] = randNumbs[index];
+                                punchTracker++; //testing purposes
+                                index++;
+                                
+                            }
+
+                            if(timerSec == -1){
+                                timerMin--;
+                                timerSec = 59;
+                            }
+
+                            if(timerSec == 0 && timerMin == 0){
+                                update();
+                                return;
+                            }
+                            
+                            if(paused == true) { // i have no idea how this worked
+                                PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon.png")));
+                            }
+                            
+                            if (ComboModeSetup.punches == punchTracker) { // i have no idea how this worked
+                                PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon.png")));
+                            }
+                            update();
+                        }catch(InterruptedException e){
+                            System.out.println("Error");
                         }
-                        if(second == 60){
-                            minute++;
-                            second = 0;
-                        }
-                        String minute_str = String.format("%02d", minute);
-                        String second_str = String.format("%02d", second);
-                        String ms_str = String.format("%02d", ms);
-                        jLabel14.setText("Time: " + minute_str + ":" + second_str + "." + ms_str);
-                    }catch(Exception e){
-                        System.out.println("Error");
                     }
                 }
-            }
-        };
-        t.start();
-    }//GEN-LAST:event_jButton8ActionPerformed
+            };
+            th.start();
+        }
+        else if (paused == false || (ComboModeSetup.punches == punchTracker) ) //testing purposes
+        {
+           PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon.png")));
+            start = false; 
+            paused = true;
+        }
+         
+    }//GEN-LAST:event_PlayPauseButtonMouseClicked
 
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+    private void ResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetButtonMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ResetButtonMouseClicked
 
-        start = false;
-        ms = 0;
-        second = 0;
-        minute = 0;
-        String minute_str = String.format("%02d", minute);
-        String second_str = String.format("%02d", second);
-        String ms_str = String.format("%02d", ms);
-        jLabel14.setText("Time: " + minute_str + ":" + second_str + "." + ms_str);
-    }//GEN-LAST:event_jButton9ActionPerformed
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
 
-    private void jLabel17MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel17MouseClicked
-        Main.transitionToPage(6);
-    }//GEN-LAST:event_jLabel17MouseClicked
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime localTime = LocalTime.now();
 
-    private void jLabel20MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel20MouseClicked
-        
-    }//GEN-LAST:event_jLabel20MouseClicked
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
-        Main.transitionToPage(1);
-    }//GEN-LAST:event_jButton2MouseClicked
+        Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
+        ComboModeSetup.punches = 1;
+    }//GEN-LAST:event_SaveButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
+    private javax.swing.JLabel BackButton;
+    private javax.swing.JLabel NextPlayer;
+    private javax.swing.JLabel PlayPauseButton;
+    private javax.swing.JLabel PreviousPlayer;
+    private javax.swing.JLabel ResetButton;
+    private javax.swing.JLabel SaveButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
@@ -386,11 +435,16 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JLabel timer;
     // End of variables declaration//GEN-END:variables
+
 }
+
