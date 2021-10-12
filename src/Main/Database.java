@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.Set;
 
 /**
  *
@@ -41,19 +43,21 @@ public class Database {
      * @param password
      * @return 1 for user and pass correct 0 if not
      */
-    public int loginUser(String username, String password) {
-        String query = "SELECT username FROM user WHERE email = '" + username + "' AND password = " + password;
-        try ( Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery(query);
+    public int loginUser(String email, String password) {
+        String query = "SELECT email FROM user WHERE email=? AND password=?";
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setNString(1, email);
+            stmt.setNString(2, password);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
             if (rs.next()) {
-                String userCheck = rs.getString("username");
-                if (username.equals(userCheck)) {
+                String userCheck = rs.getString("email");
+                if (email.equals(userCheck)) {
                     return 1;
                 }
             }
-
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e + "login error");
             return 0;
         }
         return 0;
@@ -72,10 +76,13 @@ public class Database {
         System.out.println(age);
         System.out.println(weight);
         
-        String query = "INSERT INTO user (email, password, age, weight) VALUES ('" + email + "', " + password 
-                + ", " + age + ", " + weight + ");";
-        try ( Statement stmt = conn.createStatement()) {
-            stmt.executeUpdate(query);
+        String query = "INSERT INTO user (email, password, age, weight) VALUES (?,?,?,?);";
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setNString(1, email);
+            stmt.setNString(2, password);
+            stmt.setNString(3, age);
+            stmt.setNString(4, weight);
+            stmt.executeUpdate();
             return 1;
         } catch (SQLException e) {
             System.out.println(e);
