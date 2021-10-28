@@ -32,7 +32,6 @@ public class LoginPanel extends javax.swing.JPanel {
         LogInButton = new javax.swing.JButton();
         PasswordField = new javax.swing.JPasswordField();
         HidePassword = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 0, 55));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -92,9 +91,6 @@ public class LoginPanel extends javax.swing.JPanel {
             }
         });
         add(HidePassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 460, 30, 30));
-
-        jButton1.setText("jButton1");
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 480, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void SignUpButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SignUpButtonMouseClicked
@@ -148,6 +144,5 @@ public class LoginPanel extends javax.swing.JPanel {
     private javax.swing.JButton LogInButton;
     private javax.swing.JPasswordField PasswordField;
     private javax.swing.JButton SignUpButton;
-    private javax.swing.JButton jButton1;
     // End of variables declaration//GEN-END:variables
 }

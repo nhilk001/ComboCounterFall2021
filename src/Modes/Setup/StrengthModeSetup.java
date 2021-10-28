@@ -27,7 +27,7 @@ public class StrengthModeSetup extends javax.swing.JPanel {
     public StrengthModeSetup() {
         initComponents();
         
-          SideBar.setVisible(false);
+        SideBar.setVisible(false);
         TimerPlus.setVisible(false);
         TimerMinus.setVisible(false);
         NumPlayersMinus.setVisible(false);
@@ -59,6 +59,7 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         SidebarButton = new javax.swing.JLabel();
         ComboCounterTitle = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
+        jPanel1.setVisible(false);
         About_Button = new javax.swing.JButton();
         About_Button.setOpaque(false);
         About_Button.setContentAreaFilled(false);
@@ -392,16 +393,16 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
