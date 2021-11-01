@@ -17,7 +17,6 @@ import java.util.Set;
  * return that the query has completed to keep data correct -
  * https://www.geeksforgeeks.org/how-to-use-preparedstatement-in-java/
  */
-
 public class Database {
 
     private static Connection conn = null;
@@ -76,7 +75,7 @@ public class Database {
         System.out.println(password);
         System.out.println(age);
         System.out.println(weight);
-        
+
         String query = "INSERT INTO user (email, password, age, weight) VALUES (?,?,?,?);";
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
@@ -118,6 +117,25 @@ public class Database {
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
+        }
+    }
+
+    public ResultSet getForceActivities(String email) {
+        String query = "SELECT * FROM forcemode WHERE email=? ;";
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            if (rs.next()) {
+                System.out.println(rs.toString());
+                return rs;
+            }
+            else{
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println(e + "login error");
+            return null;
         }
     }
 }
