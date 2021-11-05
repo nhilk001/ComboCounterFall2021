@@ -8,6 +8,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author Jonathan Zamora
@@ -30,7 +31,7 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     //////////////////////////////////////////////////////////////////
     public ActivityModePanel(ArrayList<Activity> activityList) {
         initComponents();
-        this.activityList = activityList;
+        this.activityList = Main.db.getForceActivities(Main.username);
         update();
 
         // Setting states
@@ -42,7 +43,6 @@ public final class ActivityModePanel extends javax.swing.JPanel {
      * instead of storing activities as objects in the activity class.
      */
     public void update() {
-        
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
         activityList.forEach(a -> {
             jTextArea1.append("   " + a.getMode() + "\t\t\t\t" + a.getTime().format(dtf) + "\n"
@@ -50,14 +50,6 @@ public final class ActivityModePanel extends javax.swing.JPanel {
                     + "      Score: " + a.getTotalForce() + "\n\n");
         });
     }
-
-    /*
-    TODO: Get all activities by username(email)
-     */
-    public void getActivities(String username) {
-
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
