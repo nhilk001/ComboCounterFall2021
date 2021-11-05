@@ -138,4 +138,22 @@ public class Database {
             return null;
         }
     }
+    public ResultSet getTimedActivities(String email) {
+        String query = "SELECT * FROM forcemode WHERE email=? ;";
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            if (rs.next()) {
+                System.out.println(rs.toString());
+                return rs;
+            }
+            else{
+                return null;
+            }
+        } catch (SQLException e) {
+            System.out.println(e + "login error");
+            return null;
+        }
+    }
 }

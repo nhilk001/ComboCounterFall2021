@@ -653,7 +653,7 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
-
+    private javax.swing.JPanel jPanel1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;
