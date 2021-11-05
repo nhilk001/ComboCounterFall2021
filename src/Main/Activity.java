@@ -31,7 +31,7 @@ public class Activity {
         this.mode = mode;
         this.totalForce = totalForce;
     }
-
+    //TODO change this to match database correctly
     public Activity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce) {
         this.min = timeElapsed;
         this.sec = 0;

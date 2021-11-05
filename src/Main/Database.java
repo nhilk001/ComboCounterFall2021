@@ -7,6 +7,9 @@ import java.sql.Statement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Set;
+import java.util.ArrayList;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 /**
  *
@@ -20,6 +23,8 @@ import java.util.Set;
 public class Database {
 
     private static Connection conn = null;
+    private LocalTime locTime = LocalTime.now();
+    private LocalDate locDate = LocalDate.now();
 
     /**
      *
@@ -39,7 +44,7 @@ public class Database {
     /**
      * Checks if user has a account in the system
      *
-     * @param username
+     * @param email
      * @param password
      * @return 1 for user and pass correct 0 if not
      */
@@ -66,8 +71,10 @@ public class Database {
     /**
      * registers new user into user table
      *
-     * @param username
+     * @param email
      * @param password
+     * @param age
+     * @param weight
      * @return 1 if complete 0 if not
      */
     public int registerUser(String email, String password, String age, String weight) {
@@ -90,6 +97,15 @@ public class Database {
         }
     }
 
+    /**
+     *
+     * @param email
+     * @param forceGoal
+     * @param totalForce
+     * @param timerSec
+     * @param timerMin
+     * @return
+     */
     public int insertForceActivity(String email, int forceGoal, int totalForce,
             int timerSec, int timerMin) {
 
@@ -105,6 +121,14 @@ public class Database {
         }
     }
 
+    /**
+     *
+     * @param email
+     * @param totalForce
+     * @param timerSec
+     * @param timerMin
+     * @return
+     */
     public int insertTimedActivity(String email, int totalForce,
             int timerSec, int timerMin) {
 
@@ -119,25 +143,40 @@ public class Database {
             return 0;
         }
     }
-
-    public ResultSet getForceActivities(String email) {
+    
+    /**
+     * Gets all entries in forcemode table that belong to user ided by email
+     * @param email
+     * @return arraylist of all entries with type Activity
+     */
+    public ArrayList<Activity> getForceActivities(String email) {
+        ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM forcemode WHERE email=? ;";
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            if (rs.next()) {
-                System.out.println(rs.toString());
-                return rs;
+            while(rs.next()) {
+                int goalForce =  rs.getInt("forceGoal");
+                int totalForce = rs.getInt("totalForce");
+                int min = rs.getInt("timerSec");
+                int sec = rs.getInt("timerMin");
+                //TODO correct activity object and line below
+                Activity act = new Activity(0,sec,locTime,locDate,"Force Mode",totalForce,goalForce);
+                activities.add(act);
             }
-            else{
-                return null;
-            }
+            return activities;
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return null;
         }
     }
+
+    /**
+     *
+     * @param email
+     * @return
+     */
     public ResultSet getTimedActivities(String email) {
         String query = "SELECT * FROM forcemode WHERE email=? ;";
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -147,8 +186,7 @@ public class Database {
             if (rs.next()) {
                 System.out.println(rs.toString());
                 return rs;
-            }
-            else{
+            } else {
                 return null;
             }
         } catch (SQLException e) {
