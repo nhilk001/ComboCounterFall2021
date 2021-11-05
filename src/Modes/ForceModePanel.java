@@ -253,7 +253,7 @@ public final class ForceModePanel extends javax.swing.JPanel {
 
         ComboCounterTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         ComboCounterTitle.setForeground(new java.awt.Color(240, 240, 240));
-        ComboCounterTitle.setText("ComboCounter");
+        ComboCounterTitle.setText("Force Mode");
         jPanel2.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N

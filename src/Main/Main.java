@@ -14,6 +14,7 @@ import Multiplayer.MultiplayerStrength;
 import Multiplayer.MultiplayerTime;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 /**
@@ -23,14 +24,15 @@ import javax.swing.JFrame;
 public class Main {
    public static JFrame Frame = new JFrame();
    static ArrayList<Activity> activityList = new ArrayList<Activity>();
-   public static String username;
+   
     public static void main(String [] args){
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new FirstPage());
         Frame.setSize(768,1024);
         Frame.setResizable(false);
         Frame.setVisible(true);
-        Frame.revalidate();
+        Frame.revalidate(); 
+        
     }
     
     /**
@@ -264,4 +266,5 @@ public class Main {
     public static boolean sidebarOpen = false;
     public static boolean countDown = false ;
     public static Database db = new Database();
+    public static String username;
 }
