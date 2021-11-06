@@ -43,9 +43,8 @@ public final class ActivityModePanel extends javax.swing.JPanel {
      * instead of storing activities as objects in the activity class.
      */
     public void update() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
         activityList.forEach(a -> {
-            jTextArea1.append("   " + a.getMode() + "\t\t\t\t" + a.getTime().format(dtf) + "\n"
+            jTextArea1.append("   " + a.getMode() + "\t\t\t\t" + a.getTime() + "\n"
                     + "      Time: " + a.getMin() + " min " + a.getSec() + " sec\n"
                     + "      Score: " + a.getTotalForce() + "\n\n");
         });
