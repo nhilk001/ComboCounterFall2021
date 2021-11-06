@@ -571,11 +571,14 @@ public final class ForceModePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
 
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("hh:mm a");
         LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
+        
         Main.db.insertForceActivity(Main.username , forceGoal, totalForce, 
-                second, minute);
+                second, minute, inTime, inDate);
         //TODO: remove createActivity
         Main.createActivity(minute, 0, localTime, localDate, "Force Mode",
                 totalForce, forceGoal);

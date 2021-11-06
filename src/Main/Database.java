@@ -10,6 +10,7 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 
 /**
  *
@@ -50,6 +51,7 @@ public class Database {
      */
     public int loginUser(String email, String password) {
         String query = "SELECT email FROM user WHERE email=? AND password=?";
+        
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
             stmt.setNString(2, password);
@@ -61,6 +63,7 @@ public class Database {
                     return 1;
                 }
             }
+            
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return 0;
@@ -78,12 +81,9 @@ public class Database {
      * @return 1 if complete 0 if not
      */
     public int registerUser(String email, String password, String age, String weight) {
-        System.out.println(email);
-        System.out.println(password);
-        System.out.println(age);
-        System.out.println(weight);
-
+        
         String query = "INSERT INTO user (email, password, age, weight) VALUES (?,?,?,?);";
+        
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
             stmt.setNString(2, password);
@@ -91,6 +91,7 @@ public class Database {
             stmt.setNString(4, weight);
             stmt.executeUpdate();
             return 1;
+            
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -107,14 +108,20 @@ public class Database {
      * @return
      */
     public int insertForceActivity(String email, int forceGoal, int totalForce,
-            int timerSec, int timerMin) {
-
-        String query = "INSERT INTO forcemode (email, forceGoal, totalForce, timerSec, "
-                + "timerMin) VALUES ('" + email + "', " + forceGoal + ", " + totalForce + ", "
-                + timerSec + ", " + timerMin + ");";
+            int timerSec, int timerMin, String time, String date) {
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+        DateTimeFormatter dtfDate = DateTimeFormatter.ofPattern("mm:dd:yyyy a");
+        
+        String query = "INSERT INTO forcemode (email, forceGoal, totalForce, timerSec, timerMin, "
+                + " timecreated, datecreated) VALUES ('" + email + "', " + forceGoal + ", " 
+                + totalForce + ", " + timerSec + ", " + timerMin + ", '" 
+                + time + "', '" + date + "');";
+        
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
             return 1;
+            
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -135,37 +142,48 @@ public class Database {
         String query = "INSERT INTO forcemode (email, totalForce, timerSec, "
                 + "timerMin) VALUES ('" + email + "', " + totalForce + ", "
                 + timerSec + ", " + timerMin + ");";
+        
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
             return 1;
+            
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
         }
     }
-    
+
     /**
      * Gets all entries in forcemode table that belong to user ided by email
+     *
      * @param email
      * @return arraylist of all entries with type Activity
      */
     public ArrayList<Activity> getForceActivities(String email) {
         ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM forcemode WHERE email=? ;";
+        
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            
             stmt.setNString(1, email);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            while(rs.next()) {
-                int goalForce =  rs.getInt("forceGoal");
+            
+            while (rs.next()) {
+                int goalForce = rs.getInt("forceGoal");
                 int totalForce = rs.getInt("totalForce");
                 int min = rs.getInt("timerSec");
                 int sec = rs.getInt("timerMin");
+                String timeCreated = rs.getNString("timecreated");
+                String dateCreated = rs.getNString("datecreated");
                 //TODO correct activity object and line below
-                Activity act = new Activity(0,sec,locTime,locDate,"Force Mode",totalForce,goalForce);
+                Activity act = new Activity(0, sec, timeCreated, dateCreated, 
+                        "Force Mode", totalForce, goalForce);
                 activities.add(act);
             }
+            
             return activities;
+            
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return null;
@@ -177,18 +195,31 @@ public class Database {
      * @param email
      * @return
      */
-    public ResultSet getTimedActivities(String email) {
-        String query = "SELECT * FROM forcemode WHERE email=? ;";
+    public ArrayList<Activity> getTimedActivities(String email) {
+        ArrayList<Activity> activities = new ArrayList(10);
+        String query = "SELECT * FROM timedmode WHERE email=? ;";
+        
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+            
             stmt.setNString(1, email);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            if (rs.next()) {
-                System.out.println(rs.toString());
-                return rs;
-            } else {
-                return null;
+            
+            while (rs.next()) {
+                int goalForce = rs.getInt("forceGoal");
+                int totalForce = rs.getInt("totalForce");
+                int min = rs.getInt("timerSec");
+                int sec = rs.getInt("timerMin");
+                String time = rs.getNString("timecreated");
+                String date = rs.getNString("datecreated");
+                //TODO correct activity object and line below
+                Activity act = new Activity(0, sec, time, date, 
+                        "Force Mode", totalForce, goalForce);
+                activities.add(act);
             }
+            
+            return activities;
+            
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return null;

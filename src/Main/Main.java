@@ -15,6 +15,7 @@ import Multiplayer.MultiplayerTime;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.sql.ResultSet;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 /**
@@ -78,7 +79,13 @@ public class Main {
     ///////////////////////////////////////////////////////////////////////////////////
     public static void createActivity(int min, int sec, LocalTime time, LocalDate date, String mode, int totalForce)
     {
-        Activity act = new Activity(min, sec, time, date, mode, totalForce);   
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        String inDate = date.format(df);
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+        String inTime = time.format(dtf);
+        
+        Activity act = new Activity(min, sec, inTime, inDate, mode, totalForce);   
         activityList.add(act);
         
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -90,7 +97,13 @@ public class Main {
     }
     public static void createActivity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce)
     {
-        Activity act = new Activity(timeElapsed, sec, time, date, mode, totalForce, goalForce);   
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        String inDate = date.format(df);
+        
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+        String inTime = time.format(dtf);
+        
+        Activity act = new Activity(timeElapsed, sec, inTime, inDate, mode, totalForce, goalForce);   
         activityList.add(act);
         
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
