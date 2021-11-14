@@ -11,11 +11,6 @@ import java.util.Random;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -23,7 +18,7 @@ import javax.swing.JOptionPane;
  */
 public class ComboModePanel extends javax.swing.JPanel {
     
-    //Variable Decleration
+    //Variable Decleration and value initialization
     int timerMin = 0;
     int timerSec = 0;
     int lastMin = 0;
@@ -31,19 +26,16 @@ public class ComboModePanel extends javax.swing.JPanel {
     int initialMin = 0;
     int initialSec = 0;
     int playerNum = 2;
-    boolean countDown = false;
-    boolean paused = true;
-    boolean start;
     int index = 0;
     int totalForce = 0;
     int hitForce = 0;
-    String numPunch = String.valueOf(ComboModeSetup.punches);
     int punchTracker = 0;
-    
     int splitGoal = ComboModeSetup.timeGoal;
-    
     int i = 1;
-    
+    boolean countDown = false;
+    boolean paused = true;
+    boolean start;
+    String numPunch = String.valueOf(ComboModeSetup.punches);
     
     
     //store force values matched to each punch for displaying data later
@@ -58,7 +50,6 @@ public class ComboModePanel extends javax.swing.JPanel {
     public ComboModePanel() 
     {
         initComponents();
-
         TotalPunch.setText(numPunch);
         TotalForce.setText("0");
         this.timerMin = 0;
@@ -119,8 +110,8 @@ public class ComboModePanel extends javax.swing.JPanel {
         String punch = String.valueOf(currPunch);  
         String tf = String.valueOf(totalForce);
         String hit= String.valueOf(hitForce);
-        String minute_str = String.format("%02d", timerMin);
-        String second_str = String.format("%02d", timerSec);
+        String minute_str;
+        String second_str;
        
         //Switch used to determine what panels to set visible as punches are thrown
         switch (i) {
@@ -441,8 +432,16 @@ public class ComboModePanel extends javax.swing.JPanel {
         timer.setText(minute_str + ":" + second_str);
     }
     
-  
-
+    /**
+    * Method to reset the UI values on the setup panel. Used whenever
+    * the user is taken to the settings page, or when the user hits the
+    * back button.
+    */
+    private void ResetComboPanelSetup() {
+            ComboModeSetup.punches = 1;
+            ComboModeSetup.forceGoal = 0;
+            ComboModeSetup.timeGoal = 1;  
+    }
     
     public  int[] generateRandNums(int max, int[] randNums){
         Random r = new Random();
@@ -927,10 +926,9 @@ public class ComboModePanel extends javax.swing.JPanel {
         {
             
             
-            int[] randNumbs = new int [40];
+            
             int[] randForce = new int [40];
             
-            generateRandNums(8000, randNumbs);
             generateRandNums(200, randForce);
             paused = false;
             
@@ -940,7 +938,7 @@ public class ComboModePanel extends javax.swing.JPanel {
             th = new Thread(){
                 @Override
                 public void run(){
-                    while(start == true && (punchTracker < ComboModeSetup.punches)){ //testing purposes
+                    while(start == true && (punchTracker < ComboModeSetup.punches)){ 
                         try{
                             sleep(1000);
                             timerSec+= 1;
@@ -948,12 +946,15 @@ public class ComboModePanel extends javax.swing.JPanel {
                             // Increases Total Force randomly
                             if (timerSec % 2 == 0)
                             {
-                                totalForce += randNumbs[index];
-                                String tf = String.valueOf(totalForce);
-                                TotalForce.setText(tf);
-                                punchNum[punchTracker] = randNumbs[index];
-                                punchTracker++; //testing purposes
+
+                                punchNum[punchTracker] = randForce[index];
+                                punchTracker++; 
                                 hitForce = randForce[index];
+                                totalForce = hitForce + totalForce;
+                                String tf = String.valueOf(totalForce);
+                                TotalForce.setText(tf); //change total force panel
+                                //update the games information and determine what panel to display next
+                                //and if the panel needs to be colored, what color it should be
                                 i = gameInfo(i, totalForce, punchTracker, timerMin, timerSec, lastMin, lastSec, hitForce);
                                 lastSec = timerSec;
                                 lastMin = timerMin;
@@ -971,11 +972,15 @@ public class ComboModePanel extends javax.swing.JPanel {
                                 return;
                             }
                             
-                            if(paused == true) { // i have no idea how this worked
+                            //when the game is paused change the button icon when it is clicked
+                            if(paused == true) { 
                                 PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
                             }
                             
-                            if (ComboModeSetup.punches == punchTracker) { // i have no idea how this worked
+                            //when the game is paused change the button icon when it is clicked
+                            //It seems redunant but I noticed considerable delay beetween the program and a clicking event
+                            //when this wasn't added to the thread.
+                            if (ComboModeSetup.punches == punchTracker) { 
                                 PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
                             }
                             update();
@@ -987,6 +992,7 @@ public class ComboModePanel extends javax.swing.JPanel {
             };
             th.start();
         }
+        //when the game is over change the pause button icon to a play button icon
         else if (paused == false || (ComboModeSetup.punches == punchTracker) ) //testing purposes
         {
            PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
@@ -1016,8 +1022,10 @@ public class ComboModePanel extends javax.swing.JPanel {
     private void Settings_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Settings_ButtonMouseClicked
         start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)", "Exit", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION)
-        Main.transitionToPage(3);
+        if (response == JOptionPane.YES_OPTION) {
+            ResetComboPanelSetup();
+            Main.transitionToPage(3);
+        }
     }//GEN-LAST:event_Settings_ButtonMouseClicked
 
     private void Profile_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Profile_ButtonMouseClicked
@@ -1042,10 +1050,8 @@ public class ComboModePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        ResetComboPanelSetup();
         Main.setup(1);
-        ComboModeSetup.punches = 1;
-        ComboModeSetup.forceGoal = 0;
-        ComboModeSetup.timeGoal = 1;
     }//GEN-LAST:event_BackButtonMouseClicked
 
     private void ComboModeSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeSaveButtonMouseClicked
@@ -1056,13 +1062,11 @@ public class ComboModePanel extends javax.swing.JPanel {
         LocalTime localTime = LocalTime.now();
         
         Main.createActivity( timerMin, timerSec, localTime, localDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
-        ComboModeSetup.punches = 1;
-        ComboModeSetup.forceGoal = 0;
-        ComboModeSetup.timeGoal = 1;
+        ResetComboPanelSetup();
     }//GEN-LAST:event_ComboModeSaveButtonMouseClicked
 
     /*
-    WHne the reset button is clicked the panel is remade, and carries over the values
+    Whee the reset button is clicked the panel is remade, and carries over the values
     set by the setup panel. 
     */
     private void ComboModeResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeResetButtonMouseClicked
