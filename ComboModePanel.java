@@ -37,15 +37,13 @@ public class ComboModePanel extends javax.swing.JPanel {
     boolean start;
     String numPunch = String.valueOf(ComboModeSetup.punches);
     
-    
-    //store force values matched to each punch for displaying data later
+    //store force values matched to each punch. Used for displaying 
+    //game panels
     int[] punchNum = new int[ComboModeSetup.punches]; 
                                 
         
     /**
-     * Initiates ComboModePanel components
-     * @param timerMin 
-     * @param timerSec
+     * Initiates ComboModePanel components.
      */
     public ComboModePanel() 
     {
@@ -69,7 +67,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     /**
      * Method to set all game information panels invisible on start up
      */
-    public void setInvisible() {
+   final public void setInvisible() {
        
         Punch1.setVisible(false);
         Punch2.setVisible(false);
@@ -393,19 +391,17 @@ public class ComboModePanel extends javax.swing.JPanel {
             setPanelColor(1, currentLabel);
         
         //user came close to beating the split, paint label yellow
-        if((sec > ComboModeSetup.timeGoal) && sec <= ComboModeSetup.timeGoal + 1)
+        if((sec > ComboModeSetup.timeGoal) && sec == ComboModeSetup.timeGoal + 1)
             setPanelColor(2, currentLabel);
         
         //user did not com,e clost to beating the split, paint label red
-        if(sec > ComboModeSetup.timeGoal + 2 )
+        if(sec >= ComboModeSetup.timeGoal + 2 )
             setPanelColor(3, currentLabel);
 
     }
     
     
     public void setPanelColor(int i, JLabel currentLabel) {
-            
-       
 
             if(i == 1) {
                 currentLabel.setBackground(Color.green);
@@ -425,7 +421,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     /**
      * Updates the timer text
      */
-    public void update()
+    public final void update()
     {
         String minute_str = String.format("%02d", timerMin);
         String second_str = String.format("%02d", timerSec);
@@ -445,8 +441,8 @@ public class ComboModePanel extends javax.swing.JPanel {
     
     public  int[] generateRandNums(int max, int[] randNums){
         Random r = new Random();
-        for(int i = 0; i < randNums.length; i++){
-            randNums[i] = r.nextInt(max) ;
+        for(int k = 0; k < randNums.length; k++){
+            randNums[k] = r.nextInt(max) ;
         }
         
         return randNums;
@@ -943,8 +939,10 @@ public class ComboModePanel extends javax.swing.JPanel {
                             sleep(1000);
                             timerSec+= 1;
 
-                            // Increases Total Force randomly
-                            if (timerSec % 2 == 0)
+                            // Increases Total Force randomly. The value that
+                            // mods timerSec is how many seconds it takes for
+                            //the random testing to generate a fake hit
+                            if (timerSec % 3 == 0)
                             {
 
                                 punchNum[punchTracker] = randForce[index];
@@ -1019,6 +1017,9 @@ public class ComboModePanel extends javax.swing.JPanel {
         // Page to transition to*/
     }//GEN-LAST:event_About_ButtonMouseClicked
 
+    /**
+     * The user is taken to the settings page.
+     */
     private void Settings_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Settings_ButtonMouseClicked
         start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)", "Exit", JOptionPane.YES_NO_OPTION);
@@ -1049,11 +1050,18 @@ public class ComboModePanel extends javax.swing.JPanel {
         // Page to transition to*/
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
+/**
+ * The user is taken back to the combo mode setup panel.
+ */    
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
         ResetComboPanelSetup();
         Main.setup(1);
     }//GEN-LAST:event_BackButtonMouseClicked
 
+    /**
+     * The user is taken to the saved activity panel, and their game information 
+     * is saved.
+     */
     private void ComboModeSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeSaveButtonMouseClicked
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
