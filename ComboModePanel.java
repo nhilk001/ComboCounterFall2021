@@ -59,7 +59,8 @@ public class ComboModePanel extends javax.swing.JPanel {
     {
         initComponents();
 
-        TotalForce.setText(numPunch);
+        TotalPunch.setText(numPunch);
+        TotalForce.setText("0");
         this.timerMin = 0;
         this.timerSec = 0;
         initialMin = 0;
@@ -471,11 +472,8 @@ public class ComboModePanel extends javax.swing.JPanel {
         Time2 = new javax.swing.JLabel();
         Time3 = new javax.swing.JLabel();
         Time5 = new javax.swing.JLabel();
-        BackButton = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         PreviousPlayer = new javax.swing.JLabel();
-        ResetButton = new javax.swing.JLabel();
-        SaveButton = new javax.swing.JLabel();
         NextPlayer = new javax.swing.JLabel();
         PlayPauseButton = new javax.swing.JLabel();
         ComboModeResetButton = new javax.swing.JLabel();
@@ -484,7 +482,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         TotalForce = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         ComboCounterTitle = new javax.swing.JLabel();
-        BackButton1 = new javax.swing.JLabel();
+        BackButton = new javax.swing.JLabel();
         SidebarButton = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
         jPanel1.setVisible(false);
@@ -527,7 +525,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         Punch8 = new javax.swing.JLabel();
         Time8 = new javax.swing.JLabel();
         Force8 = new javax.swing.JLabel();
-        TotalPunch1 = new javax.swing.JLabel();
+        TotalPunch = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 55));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -613,35 +611,11 @@ public class ComboModePanel extends javax.swing.JPanel {
         Time5.setOpaque(true);
         add(Time5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 140, 60));
 
-        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
-        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackButtonMouseClicked(evt);
-            }
-        });
-        add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         jPanel3.setBackground(new java.awt.Color(51, 51, 56));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PreviousPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backPlayerIcon.png"))); // NOI18N
         jPanel3.add(PreviousPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 80, 80));
-
-        ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/retryIcon.png"))); // NOI18N
-        ResetButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ResetButtonMouseClicked(evt);
-            }
-        });
-        jPanel3.add(ResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 200, 80, 80));
-
-        SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
-        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SaveButtonMouseClicked(evt);
-            }
-        });
-        jPanel3.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 200, 80, 80));
 
         NextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nextPlayerIcon.png"))); // NOI18N
         jPanel3.add(NextPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 80, 80));
@@ -691,13 +665,13 @@ public class ComboModePanel extends javax.swing.JPanel {
         ComboCounterTitle.setText("ComboCounter");
         jPanel1.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
-        BackButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
-        BackButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
+        BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                BackButton1MouseClicked(evt);
+                BackButtonMouseClicked(evt);
             }
         });
-        jPanel1.add(BackButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         SidebarButton.setBackground(new java.awt.Color(51, 51, 56));
         SidebarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -930,21 +904,16 @@ public class ComboModePanel extends javax.swing.JPanel {
         Force8.setOpaque(true);
         add(Force8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 700, 140, 60));
 
-        TotalPunch1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        TotalPunch1.setForeground(new java.awt.Color(240, 240, 240));
-        TotalPunch1.setText("Punches");
-        add(TotalPunch1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 200, -1));
+        TotalPunch.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        TotalPunch.setForeground(new java.awt.Color(240, 240, 240));
+        TotalPunch.setText("Punches");
+        add(TotalPunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 200, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private int minute;
     private int second;
     private int ms;
     
-    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
-        ComboModeSetup.punches = 1;
-        Main.setup(1);
-    }//GEN-LAST:event_BackButtonMouseClicked
-
 /*
     When the play button is clicked the game begins.
     */
@@ -1027,21 +996,6 @@ public class ComboModePanel extends javax.swing.JPanel {
          
     }//GEN-LAST:event_PlayPauseButtonMouseClicked
 
-    private void ResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ResetButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_ResetButtonMouseClicked
-
-    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
-        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
-        LocalDate localDate = LocalDate.now();
-
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
-        LocalTime localTime = LocalTime.now();
-        
-        Main.createActivity( timerMin, timerSec, localTime, localDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
-        ComboModeSetup.punches = 1;
-    }//GEN-LAST:event_SaveButtonMouseClicked
-
     private void SidebarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButtonMouseClicked
         if (Main.sidebarOpen == false) {
             SideBar.setVisible(true);
@@ -1087,9 +1041,12 @@ public class ComboModePanel extends javax.swing.JPanel {
         // Page to transition to*/
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
-    private void BackButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButton1MouseClicked
-        Main.setup(3);
-    }//GEN-LAST:event_BackButton1MouseClicked
+    private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
+        Main.setup(1);
+        ComboModeSetup.punches = 1;
+        ComboModeSetup.forceGoal = 0;
+        ComboModeSetup.timeGoal = 1;
+    }//GEN-LAST:event_BackButtonMouseClicked
 
     private void ComboModeSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeSaveButtonMouseClicked
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
@@ -1097,13 +1054,19 @@ public class ComboModePanel extends javax.swing.JPanel {
 
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.now();
-        Main.db.insertTimedActivity(Main.username, totalForce, timerSec, timerMin);
-        //TODO: remove createActivity
-        Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
+        
+        Main.createActivity( timerMin, timerSec, localTime, localDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
+        ComboModeSetup.punches = 1;
+        ComboModeSetup.forceGoal = 0;
+        ComboModeSetup.timeGoal = 1;
     }//GEN-LAST:event_ComboModeSaveButtonMouseClicked
 
+    /*
+    WHne the reset button is clicked the panel is remade, and carries over the values
+    set by the setup panel. 
+    */
     private void ComboModeResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeResetButtonMouseClicked
-        // TODO add your handling code here:
+        Main.createComboMode();
     }//GEN-LAST:event_ComboModeResetButtonMouseClicked
 
 
@@ -1111,7 +1074,6 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;
     private javax.swing.JLabel BackButton;
-    private javax.swing.JLabel BackButton1;
     private javax.swing.JLabel ComboCounterTitle;
     private javax.swing.JLabel ComboModeResetButton;
     private javax.swing.JLabel ComboModeSaveButton;
@@ -1138,8 +1100,6 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JLabel Punch7;
     private javax.swing.JLabel Punch8;
     private javax.swing.JLabel PunchesText;
-    private javax.swing.JLabel ResetButton;
-    private javax.swing.JLabel SaveButton;
     private javax.swing.JButton Settings_Button;
     private javax.swing.JPanel SideBar;
     private javax.swing.JLabel SidebarButton;
@@ -1152,7 +1112,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JLabel Time7;
     private javax.swing.JLabel Time8;
     private javax.swing.JLabel TotalForce;
-    private javax.swing.JLabel TotalPunch1;
+    private javax.swing.JLabel TotalPunch;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;
