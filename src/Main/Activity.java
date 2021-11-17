@@ -15,7 +15,9 @@ import java.time.format.DateTimeFormatter;
  */
 public class Activity {
 
+
     private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+
     private int min;
     private int sec;
     private String time;
@@ -34,7 +36,9 @@ public class Activity {
         this.totalForce = totalForce;
     }
 
+
     public Activity(int timeElapsed, int sec, String time, String date, String mode, int totalForce, int goalForce) {
+
         this.min = timeElapsed;
         this.sec = 0;
         this.time = time;

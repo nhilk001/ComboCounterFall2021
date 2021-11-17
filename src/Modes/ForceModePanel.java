@@ -571,6 +571,7 @@ public final class ForceModePanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
+
         String inDate = localDate.format(date);
 
         DateTimeFormatter time = DateTimeFormatter.ofPattern("hh:mm a");
