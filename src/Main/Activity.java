@@ -7,23 +7,29 @@ package Main;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
+import java.time.format.DateTimeFormatter;
+ 
 /**
  *
  * @author shamc Lets change this to all come from the database
  */
 public class Activity {
 
+
+
+    
+    private DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+
     private int min;
     private int sec;
-    private LocalTime time;
-    private LocalDate date;
+    private String time;
+    private String date;
 
     private String mode;
     private int totalForce;
     private int goalForce;
 
-    public Activity(int min, int sec, LocalTime time, LocalDate date, String mode, int totalForce) {
+    public Activity(int min, int sec, String time, String date, String mode, int totalForce) {
         this.min = min;
         this.sec = sec;
         this.time = time;
@@ -32,7 +38,9 @@ public class Activity {
         this.totalForce = totalForce;
     }
 
-    public Activity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce) {
+
+    public Activity(int timeElapsed, int sec, String time, String date, String mode, int totalForce, int goalForce) {
+
         this.min = timeElapsed;
         this.sec = 0;
         this.time = time;
@@ -58,20 +66,20 @@ public class Activity {
         this.sec = sec;
     }
 
-    public LocalTime getTime() {
+    public String getTime() {
         return time;
     }
 
     public void setTime(LocalTime time) {
-        this.time = time;
+        this.time = time.format(dtf);
     }
 
-    public LocalDate getDate() {
+    public String getDate() {
         return date;
     }
 
     public void setDate(LocalDate date) {
-        this.date = date;
+        this.date = date.toString();
     }
 
     public String getMode() {

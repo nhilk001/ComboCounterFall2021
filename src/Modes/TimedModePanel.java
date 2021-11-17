@@ -75,6 +75,7 @@ public class TimedModePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         SideBar = new javax.swing.JPanel();
+        jPanel1.setVisible(false);
         About_Button = new javax.swing.JButton();
         About_Button.setOpaque(false);
         About_Button.setContentAreaFilled(false);
@@ -198,7 +199,7 @@ public class TimedModePanel extends javax.swing.JPanel {
 
         ComboCounterTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         ComboCounterTitle.setForeground(new java.awt.Color(240, 240, 240));
-        ComboCounterTitle.setText("ComboCounter");
+        ComboCounterTitle.setText("Timed Mode");
         jPanel2.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
@@ -388,7 +389,7 @@ public class TimedModePanel extends javax.swing.JPanel {
         //TODO: remove createActivity
         Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
     }//GEN-LAST:event_SaveButtonMouseClicked
-
+    private javax.swing.JPanel jPanel1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;

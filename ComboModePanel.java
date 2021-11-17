@@ -12,13 +12,24 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
 /**
  *
  * @author John Kelly
  */
 public class ComboModePanel extends javax.swing.JPanel {
     
+
     //Variable Decleration and value initialization
+
+    //Variable Decleration
+
     int timerMin = 0;
     int timerSec = 0;
     int lastMin = 0;
@@ -39,17 +50,21 @@ public class ComboModePanel extends javax.swing.JPanel {
     
     //store force values matched to each punch. Used for displaying 
     //game panels
+
     int[] punchNum = new int[ComboModeSetup.punches]; 
                                 
         
     /**
+
      * Initiates ComboModePanel components.
      */
     public ComboModePanel() 
     {
         initComponents();
+
         TotalPunch.setText(numPunch);
         TotalForce.setText("0");
+
         this.timerMin = 0;
         this.timerSec = 0;
         initialMin = 0;
@@ -67,7 +82,9 @@ public class ComboModePanel extends javax.swing.JPanel {
     /**
      * Method to set all game information panels invisible on start up
      */
+
    final public void setInvisible() {
+
        
         Punch1.setVisible(false);
         Punch2.setVisible(false);
@@ -108,8 +125,10 @@ public class ComboModePanel extends javax.swing.JPanel {
         String punch = String.valueOf(currPunch);  
         String tf = String.valueOf(totalForce);
         String hit= String.valueOf(hitForce);
+
         String minute_str;
         String second_str;
+
        
         //Switch used to determine what panels to set visible as punches are thrown
         switch (i) {
@@ -391,17 +410,20 @@ public class ComboModePanel extends javax.swing.JPanel {
             setPanelColor(1, currentLabel);
         
         //user came close to beating the split, paint label yellow
+
         if((sec > ComboModeSetup.timeGoal) && sec == ComboModeSetup.timeGoal + 1)
             setPanelColor(2, currentLabel);
         
         //user did not com,e clost to beating the split, paint label red
         if(sec >= ComboModeSetup.timeGoal + 2 )
+
             setPanelColor(3, currentLabel);
 
     }
     
     
     public void setPanelColor(int i, JLabel currentLabel) {
+
 
             if(i == 1) {
                 currentLabel.setBackground(Color.green);
@@ -421,13 +443,16 @@ public class ComboModePanel extends javax.swing.JPanel {
     /**
      * Updates the timer text
      */
+
     public final void update()
+
     {
         String minute_str = String.format("%02d", timerMin);
         String second_str = String.format("%02d", timerSec);
         timer.setText(minute_str + ":" + second_str);
     }
     
+
     /**
     * Method to reset the UI values on the setup panel. Used whenever
     * the user is taken to the settings page, or when the user hits the
@@ -443,6 +468,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         Random r = new Random();
         for(int k = 0; k < randNums.length; k++){
             randNums[k] = r.nextInt(max) ;
+
         }
         
         return randNums;
@@ -467,8 +493,10 @@ public class ComboModePanel extends javax.swing.JPanel {
         Time2 = new javax.swing.JLabel();
         Time3 = new javax.swing.JLabel();
         Time5 = new javax.swing.JLabel();
+
         jPanel3 = new javax.swing.JPanel();
         PreviousPlayer = new javax.swing.JLabel();
+
         NextPlayer = new javax.swing.JLabel();
         PlayPauseButton = new javax.swing.JLabel();
         ComboModeResetButton = new javax.swing.JLabel();
@@ -477,7 +505,9 @@ public class ComboModePanel extends javax.swing.JPanel {
         TotalForce = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         ComboCounterTitle = new javax.swing.JLabel();
+
         BackButton = new javax.swing.JLabel();
+
         SidebarButton = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
         jPanel1.setVisible(false);
@@ -521,6 +551,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         Time8 = new javax.swing.JLabel();
         Force8 = new javax.swing.JLabel();
         TotalPunch = new javax.swing.JLabel();
+
 
         setBackground(new java.awt.Color(0, 0, 55));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -606,11 +637,14 @@ public class ComboModePanel extends javax.swing.JPanel {
         Time5.setOpaque(true);
         add(Time5, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 520, 140, 60));
 
+
+
         jPanel3.setBackground(new java.awt.Color(51, 51, 56));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         PreviousPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backPlayerIcon.png"))); // NOI18N
         jPanel3.add(PreviousPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 30, 80, 80));
+
 
         NextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nextPlayerIcon.png"))); // NOI18N
         jPanel3.add(NextPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, 80, 80));
@@ -660,6 +694,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         ComboCounterTitle.setText("ComboCounter");
         jPanel1.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
+
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
         BackButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -667,6 +702,7 @@ public class ComboModePanel extends javax.swing.JPanel {
             }
         });
         jPanel1.add(BackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
 
         SidebarButton.setBackground(new java.awt.Color(51, 51, 56));
         SidebarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -899,16 +935,20 @@ public class ComboModePanel extends javax.swing.JPanel {
         Force8.setOpaque(true);
         add(Force8, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 700, 140, 60));
 
+
         TotalPunch.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         TotalPunch.setForeground(new java.awt.Color(240, 240, 240));
         TotalPunch.setText("Punches");
         add(TotalPunch, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 100, 200, -1));
+
     }// </editor-fold>//GEN-END:initComponents
 
     private int minute;
     private int second;
     private int ms;
     
+
+
 /*
     When the play button is clicked the game begins.
     */
@@ -922,9 +962,11 @@ public class ComboModePanel extends javax.swing.JPanel {
         {
             
             
+
             
             int[] randForce = new int [40];
             
+
             generateRandNums(200, randForce);
             paused = false;
             
@@ -934,10 +976,13 @@ public class ComboModePanel extends javax.swing.JPanel {
             th = new Thread(){
                 @Override
                 public void run(){
+
                     while(start == true && (punchTracker < ComboModeSetup.punches)){ 
+
                         try{
                             sleep(1000);
                             timerSec+= 1;
+
 
                             // Increases Total Force randomly. The value that
                             // mods timerSec is how many seconds it takes for
@@ -953,6 +998,7 @@ public class ComboModePanel extends javax.swing.JPanel {
                                 TotalForce.setText(tf); //change total force panel
                                 //update the games information and determine what panel to display next
                                 //and if the panel needs to be colored, what color it should be
+
                                 i = gameInfo(i, totalForce, punchTracker, timerMin, timerSec, lastMin, lastSec, hitForce);
                                 lastSec = timerSec;
                                 lastMin = timerMin;
@@ -970,6 +1016,7 @@ public class ComboModePanel extends javax.swing.JPanel {
                                 return;
                             }
                             
+
                             //when the game is paused change the button icon when it is clicked
                             if(paused == true) { 
                                 PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
@@ -979,6 +1026,7 @@ public class ComboModePanel extends javax.swing.JPanel {
                             //It seems redunant but I noticed considerable delay beetween the program and a clicking event
                             //when this wasn't added to the thread.
                             if (ComboModeSetup.punches == punchTracker) { 
+
                                 PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
                             }
                             update();
@@ -990,7 +1038,9 @@ public class ComboModePanel extends javax.swing.JPanel {
             };
             th.start();
         }
+
         //when the game is over change the pause button icon to a play button icon
+
         else if (paused == false || (ComboModeSetup.punches == punchTracker) ) //testing purposes
         {
            PlayPauseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/playIcon2.png")));
@@ -999,6 +1049,8 @@ public class ComboModePanel extends javax.swing.JPanel {
         }
          
     }//GEN-LAST:event_PlayPauseButtonMouseClicked
+
+
 
     private void SidebarButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButtonMouseClicked
         if (Main.sidebarOpen == false) {
@@ -1017,6 +1069,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         // Page to transition to*/
     }//GEN-LAST:event_About_ButtonMouseClicked
 
+
     /**
      * The user is taken to the settings page.
      */
@@ -1027,6 +1080,7 @@ public class ComboModePanel extends javax.swing.JPanel {
             ResetComboPanelSetup();
             Main.transitionToPage(3);
         }
+
     }//GEN-LAST:event_Settings_ButtonMouseClicked
 
     private void Profile_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Profile_ButtonMouseClicked
@@ -1050,6 +1104,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         // Page to transition to*/
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
+
 /**
  * The user is taken back to the combo mode setup panel.
  */    
@@ -1062,12 +1117,14 @@ public class ComboModePanel extends javax.swing.JPanel {
      * The user is taken to the saved activity panel, and their game information 
      * is saved.
      */
+
     private void ComboModeSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeSaveButtonMouseClicked
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
 
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.now();
+
         
         Main.createActivity( timerMin, timerSec, localTime, localDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
         ResetComboPanelSetup();
@@ -1079,6 +1136,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     */
     private void ComboModeResetButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeResetButtonMouseClicked
         Main.createComboMode();
+
     }//GEN-LAST:event_ComboModeResetButtonMouseClicked
 
 
@@ -1086,6 +1144,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;
     private javax.swing.JLabel BackButton;
+
     private javax.swing.JLabel ComboCounterTitle;
     private javax.swing.JLabel ComboModeResetButton;
     private javax.swing.JLabel ComboModeSaveButton;
@@ -1112,6 +1171,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JLabel Punch7;
     private javax.swing.JLabel Punch8;
     private javax.swing.JLabel PunchesText;
+
     private javax.swing.JButton Settings_Button;
     private javax.swing.JPanel SideBar;
     private javax.swing.JLabel SidebarButton;
@@ -1124,7 +1184,9 @@ public class ComboModePanel extends javax.swing.JPanel {
     private javax.swing.JLabel Time7;
     private javax.swing.JLabel Time8;
     private javax.swing.JLabel TotalForce;
+
     private javax.swing.JLabel TotalPunch;
+
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel8;

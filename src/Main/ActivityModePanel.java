@@ -7,12 +7,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.Random;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 /**
  * @author Jonathan Zamora
  */
 public final class ActivityModePanel extends javax.swing.JPanel {
-    
+
     // Declaring vars
     int timerMin = 0;
     int timerSec = 15;
@@ -21,43 +23,32 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     int totalForce = 0;
     boolean start;
     ArrayList<Activity> activityList = new ArrayList<>();
-    
+
     //////////////////////////////////////////////////////////////////
     // Changes needed:  - Make the year/month/days actually change  //
     // - Add feedback when a specific date is selected (ex: Day 21) //
     // - Change variables so it accomodates the other modes         //
     //////////////////////////////////////////////////////////////////
-    public ActivityModePanel(ArrayList<Activity> activityList)
-    {
+    public ActivityModePanel(ArrayList<Activity> activityList) {
         initComponents();
-        this.activityList = activityList;
+        this.activityList = Main.db.getForceActivities(Main.username);
         update();
-        
+
         // Setting states
         SideBar.setVisible(false);
     }
-    
+
     /**
-     * Adds session information to text area
-     * TODO: change this to use database instead of storing activities as objects
-     *      in the activity class.
+
      */
-    public void update()
-    {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
+    public void update() {
         activityList.forEach(a -> {
-            jTextArea1.append("   " + a.getMode() + "\t\t\t\t" + a.getTime().format(dtf) + "\n" + 
-                    "      Time: " + a.getMin() + " min " + a.getSec() + " sec\n" +
-                            "      Score: " + a.getTotalForce() + "\n\n");
+            jTextArea1.append("   " + a.getMode() + "\t\t\t\t" + a.getTime() + "\n"
+                    + "      Time: " + a.getMin() + " min " + a.getSec() + " sec\n"
+                    + "      Score: " + a.getTotalForce() + "\n\n");
         });
     }
-    /*
-    TODO: Get all activities by username(email)
-    */
-    public void getActivities(String username){
-        
-    }
-        
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -365,15 +356,12 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackButton1MouseClicked
 
     private void SidebarButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButton1MouseClicked
-        if (Main.sidebarOpen == false)
-        {
-            jPanel1.setVisible(true) ;
-            Main.sidebarOpen = true ;
-        }
-        else if (Main.sidebarOpen == true)
-        {
-            jPanel1.setVisible(false) ;
-            Main.sidebarOpen = false ;
+        if (Main.sidebarOpen == false) {
+            jPanel1.setVisible(true);
+            Main.sidebarOpen = true;
+        } else if (Main.sidebarOpen == true) {
+            jPanel1.setVisible(false);
+            Main.sidebarOpen = false;
         }
     }//GEN-LAST:event_SidebarButton1MouseClicked
 

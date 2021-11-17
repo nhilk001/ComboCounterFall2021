@@ -253,7 +253,7 @@ public final class ForceModePanel extends javax.swing.JPanel {
 
         ComboCounterTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         ComboCounterTitle.setForeground(new java.awt.Color(240, 240, 240));
-        ComboCounterTitle.setText("ComboCounter");
+        ComboCounterTitle.setText("Force Mode");
         jPanel2.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
@@ -572,10 +572,14 @@ public final class ForceModePanel extends javax.swing.JPanel {
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
 
-        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        String inDate = localDate.format(date);
+
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("hh:mm a");
         LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
+        
         Main.db.insertForceActivity(Main.username , forceGoal, totalForce, 
-                second, minute);
+                second, minute, inTime, inDate);
         //TODO: remove createActivity
         Main.createActivity(minute, 0, localTime, localDate, "Force Mode",
                 totalForce, forceGoal);

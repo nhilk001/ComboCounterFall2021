@@ -64,13 +64,22 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     private void initComponents() {
 
         SideBar = new javax.swing.JPanel();
+        jPanel1.setVisible(false);
         SettingsButton = new javax.swing.JButton();
+        AboutButton.setOpaque(false);
+        AboutButton.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         ProfileButton = new javax.swing.JButton();
+        AboutButton.setOpaque(false);
+        AboutButton.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         ActivityButton = new javax.swing.JButton();
+        AboutButton.setOpaque(false);
+        AboutButton.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         FeedbackButton = new javax.swing.JButton();
+        AboutButton.setOpaque(false);
+        AboutButton.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         AboutButton = new javax.swing.JButton();
         TopBar = new javax.swing.JPanel();
@@ -180,7 +189,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
 
         ComboCounterTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
         ComboCounterTitle.setForeground(new java.awt.Color(240, 240, 240));
-        ComboCounterTitle.setText("ComboCounter");
+        ComboCounterTitle.setText("Punch Challenge");
         TopBar.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         BackButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backIcon.png"))); // NOI18N
@@ -444,7 +453,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         ValidPunchesLabel.setText(Integer.toString(validPunches));
         InvalidPunchesLabel.setText(Integer.toString(invalidPunches));
     }
-    
+    private javax.swing.JPanel jPanel1;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AboutButton;
     private javax.swing.JButton ActivityButton;
