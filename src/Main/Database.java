@@ -16,9 +16,6 @@ import java.time.format.DateTimeFormatter;
  *
  * @author nshilk
  *
- * - all database functions need to be done through this class and called as
- * methods where needed - may need to incorporate waiting for the database to
- * return that the query has completed to keep data correct -
  * https://www.geeksforgeeks.org/how-to-use-preparedstatement-in-java/
  */
 public class Database {

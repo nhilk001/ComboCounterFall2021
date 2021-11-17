@@ -113,6 +113,14 @@ public class Main {
         Frame.repaint();
         Frame.revalidate();
     }
+    public static void createActivityPage(){
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Frame.setContentPane(new ActivityModePanel(activityList));
+        Frame.setSize(768,1024);
+        Frame.setResizable(false);
+        Frame.repaint();
+        Frame.revalidate();
+    }
     public static void createActivity()
     {
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
