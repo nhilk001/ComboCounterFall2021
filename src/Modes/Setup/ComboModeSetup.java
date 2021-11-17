@@ -369,7 +369,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_StartButton1MouseClicked
 
     private void NumPunchesPlus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumPunchesPlus1MouseClicked
-        if (punches < 100)
+        if (punches < 10)
         {
             punches++;
             String punchNum = String.valueOf(punches);

@@ -113,11 +113,7 @@ public class Main {
         Frame.repaint();
         Frame.revalidate();
     }
-    public static void createActivity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce)
-    {
-        Activity act = new Activity(timeElapsed, sec, time, date, mode, totalForce, goalForce);   
-        activityList.add(act);
-        
+    public static void createActivityPage(){
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new ActivityModePanel(activityList));
         Frame.setSize(768,1024);
@@ -125,7 +121,6 @@ public class Main {
         Frame.repaint();
         Frame.revalidate();
     }
-
     public static void createActivity()
     {
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
