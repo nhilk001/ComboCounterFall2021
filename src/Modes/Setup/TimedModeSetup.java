@@ -55,6 +55,23 @@ public class TimedModeSetup extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        ComboCounterTitle1 = new javax.swing.JLabel();
+        SidebarButton1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        Timer1 = new javax.swing.JLabel();
+        NumPlayersPlus1 = new javax.swing.JLabel();
+        NumPlayersMinus1 = new javax.swing.JLabel();
+        StartButton1 = new javax.swing.JButton();
+        Competition_Button1 = new javax.swing.JLabel();
+        Training_Button1 = new javax.swing.JLabel();
+        NumOfPlayers1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        NumOfPlayersText1 = new javax.swing.JLabel();
+        TimerMinus1 = new javax.swing.JLabel();
+        TimerPlus1 = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
         jPanel1.setVisible(false);
         About_Button = new javax.swing.JButton();
@@ -77,23 +94,6 @@ public class TimedModeSetup extends javax.swing.JPanel {
         About_Button.setOpaque(false);
         About_Button.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
-        jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        ComboCounterTitle1 = new javax.swing.JLabel();
-        SidebarButton1 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        Timer1 = new javax.swing.JLabel();
-        NumPlayersPlus1 = new javax.swing.JLabel();
-        NumPlayersMinus1 = new javax.swing.JLabel();
-        StartButton1 = new javax.swing.JButton();
-        Competition_Button1 = new javax.swing.JLabel();
-        Training_Button1 = new javax.swing.JLabel();
-        NumOfPlayers1 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        NumOfPlayersText1 = new javax.swing.JLabel();
-        TimerMinus1 = new javax.swing.JLabel();
-        TimerPlus1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         ComboCounterTitle = new javax.swing.JLabel();
         SidebarButton = new javax.swing.JLabel();
@@ -121,82 +121,6 @@ public class TimedModeSetup extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(768, 1024));
         setPreferredSize(new java.awt.Dimension(768, 1024));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        SideBar.setBackground(new java.awt.Color(51, 51, 56));
-        SideBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 5, 0, new java.awt.Color(0, 0, 0)));
-        SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        About_Button.setBackground(new java.awt.Color(51, 51, 56));
-        About_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        About_Button.setForeground(new java.awt.Color(240, 240, 240));
-        About_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/aboutIcon.png"))); // NOI18N
-        About_Button.setText(" About");
-        About_Button.setBorder(null);
-        About_Button.setContentAreaFilled(false);
-        About_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                About_ButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(About_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
-
-        Settings_Button.setBackground(new java.awt.Color(51, 51, 56));
-        Settings_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        Settings_Button.setForeground(new java.awt.Color(240, 240, 240));
-        Settings_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/settingsIcon.png"))); // NOI18N
-        Settings_Button.setText(" Settings");
-        Settings_Button.setBorder(null);
-        Settings_Button.setContentAreaFilled(false);
-        Settings_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Settings_Button.setFocusPainted(false);
-        Settings_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Settings_ButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(Settings_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 60));
-
-        Profile_Button.setBackground(new java.awt.Color(51, 51, 56));
-        Profile_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        Profile_Button.setForeground(new java.awt.Color(240, 240, 240));
-        Profile_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profileIcon.png"))); // NOI18N
-        Profile_Button.setText(" Profile");
-        Profile_Button.setBorder(null);
-        Profile_Button.setContentAreaFilled(false);
-        Profile_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Profile_ButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(Profile_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, 60));
-
-        Activity_Button.setBackground(new java.awt.Color(51, 51, 56));
-        Activity_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        Activity_Button.setForeground(new java.awt.Color(240, 240, 240));
-        Activity_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/activityIcon.png"))); // NOI18N
-        Activity_Button.setText(" Activity");
-        Activity_Button.setBorder(null);
-        Activity_Button.setContentAreaFilled(false);
-        Activity_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Activity_ButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(Activity_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 160, 60));
-
-        Feedback_Button.setBackground(new java.awt.Color(51, 51, 56));
-        Feedback_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        Feedback_Button.setForeground(new java.awt.Color(240, 240, 240));
-        Feedback_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/feedbackIcon.png"))); // NOI18N
-        Feedback_Button.setText(" Feedback");
-        Feedback_Button.setBorder(null);
-        Feedback_Button.setContentAreaFilled(false);
-        Feedback_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Feedback_ButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 55));
         jPanel1.setMaximumSize(new java.awt.Dimension(768, 1024));
@@ -337,7 +261,83 @@ public class TimedModeSetup extends javax.swing.JPanel {
         });
         jPanel1.add(TimerPlus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 360, -1, 40));
 
-        SideBar.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-500, -130, -1, -1));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+
+        SideBar.setBackground(new java.awt.Color(51, 51, 56));
+        SideBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 5, 0, new java.awt.Color(0, 0, 0)));
+        SideBar.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        About_Button.setBackground(new java.awt.Color(51, 51, 56));
+        About_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        About_Button.setForeground(new java.awt.Color(240, 240, 240));
+        About_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/aboutIcon.png"))); // NOI18N
+        About_Button.setText(" About");
+        About_Button.setBorder(null);
+        About_Button.setContentAreaFilled(false);
+        About_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                About_ButtonMouseClicked(evt);
+            }
+        });
+        SideBar.add(About_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
+
+        Settings_Button.setBackground(new java.awt.Color(51, 51, 56));
+        Settings_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        Settings_Button.setForeground(new java.awt.Color(240, 240, 240));
+        Settings_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/settingsIcon.png"))); // NOI18N
+        Settings_Button.setText(" Settings");
+        Settings_Button.setBorder(null);
+        Settings_Button.setContentAreaFilled(false);
+        Settings_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Settings_Button.setFocusPainted(false);
+        Settings_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Settings_ButtonMouseClicked(evt);
+            }
+        });
+        SideBar.add(Settings_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 60));
+
+        Profile_Button.setBackground(new java.awt.Color(51, 51, 56));
+        Profile_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        Profile_Button.setForeground(new java.awt.Color(240, 240, 240));
+        Profile_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/profileIcon.png"))); // NOI18N
+        Profile_Button.setText(" Profile");
+        Profile_Button.setBorder(null);
+        Profile_Button.setContentAreaFilled(false);
+        Profile_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Profile_ButtonMouseClicked(evt);
+            }
+        });
+        SideBar.add(Profile_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, 60));
+
+        Activity_Button.setBackground(new java.awt.Color(51, 51, 56));
+        Activity_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        Activity_Button.setForeground(new java.awt.Color(240, 240, 240));
+        Activity_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/activityIcon.png"))); // NOI18N
+        Activity_Button.setText(" Activity");
+        Activity_Button.setBorder(null);
+        Activity_Button.setContentAreaFilled(false);
+        Activity_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Activity_ButtonMouseClicked(evt);
+            }
+        });
+        SideBar.add(Activity_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 160, 60));
+
+        Feedback_Button.setBackground(new java.awt.Color(51, 51, 56));
+        Feedback_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
+        Feedback_Button.setForeground(new java.awt.Color(240, 240, 240));
+        Feedback_Button.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/feedbackIcon.png"))); // NOI18N
+        Feedback_Button.setText(" Feedback");
+        Feedback_Button.setBorder(null);
+        Feedback_Button.setContentAreaFilled(false);
+        Feedback_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Feedback_ButtonMouseClicked(evt);
+            }
+        });
+        SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
         add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
 
