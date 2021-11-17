@@ -39,7 +39,8 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     }
 
     /**
-
+     * Adds session information to text area TODO: change this to use database
+     * instead of storing activities as objects in the activity class.
      */
     public void update() {
         activityList.forEach(a -> {
@@ -48,7 +49,6 @@ public final class ActivityModePanel extends javax.swing.JPanel {
                     + "      Score: " + a.getTotalForce() + "\n\n");
         });
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
