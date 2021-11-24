@@ -224,6 +224,11 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         add(TimedModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 30, 30));
 
         StrengthModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
+        StrengthModeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StrengthModeButtonMouseClicked(evt);
+            }
+        });
         add(StrengthModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 30, 30));
 
         PunchChallengeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png"))); // NOI18N
@@ -562,6 +567,10 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
     private void ComboModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeButtonMouseClicked
         Main.setup(1);
     }//GEN-LAST:event_ComboModeButtonMouseClicked
+
+    private void StrengthModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StrengthModeButtonMouseClicked
+        Main.setup(4);
+    }//GEN-LAST:event_StrengthModeButtonMouseClicked
 
    
     private void secondsPlus() {
