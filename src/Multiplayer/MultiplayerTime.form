@@ -126,42 +126,42 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player1" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score1" alignment="3" pref="51" max="32767" attributes="0"/>
+                      <Component id="score1" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi1" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player2" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score2" alignment="3" pref="51" max="32767" attributes="0"/>
+                      <Component id="score2" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi2" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player3" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score3" alignment="3" pref="51" max="32767" attributes="0"/>
+                      <Component id="score3" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi3" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player4" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score4" alignment="3" pref="51" max="32767" attributes="0"/>
+                      <Component id="score4" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi4" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player5" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score5" alignment="3" pref="51" max="32767" attributes="0"/>
+                      <Component id="score5" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi5" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="player6" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
-                      <Component id="score6" alignment="3" pref="53" max="32767" attributes="0"/>
+                      <Component id="score6" alignment="3" max="32767" attributes="0"/>
                       <Component id="handi6" alignment="3" min="-2" pref="47" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                   <Component id="jButton1" min="-2" pref="61" max="-2" attributes="0"/>
-                  <EmptySpace pref="284" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
