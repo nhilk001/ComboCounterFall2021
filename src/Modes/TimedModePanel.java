@@ -35,6 +35,7 @@ public class TimedModePanel extends javax.swing.JPanel {
     public TimedModePanel(int timerMin, int timerSec) {
         initComponents();
 
+        
         this.timerMin = timerMin;
         this.timerSec = timerSec;
         initialMin = timerMin;
