@@ -389,7 +389,7 @@ public class TimedModePanel extends javax.swing.JPanel {
         //TODO: remove createActivity
         Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
     }//GEN-LAST:event_SaveButtonMouseClicked
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;
