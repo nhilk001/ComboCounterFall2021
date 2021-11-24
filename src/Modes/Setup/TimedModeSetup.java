@@ -363,6 +363,11 @@ public class TimedModeSetup extends javax.swing.JPanel {
         add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 755, 80));
 
         PunchChallengeButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
+        PunchChallengeButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PunchChallengeButton1MouseClicked(evt);
+            }
+        });
         add(PunchChallengeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 30, 30));
 
         ForceModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
@@ -739,6 +744,10 @@ public class TimedModeSetup extends javax.swing.JPanel {
         // TODO add your handling code here:
         Main.setup(2);
     }//GEN-LAST:event_ForceModeButtonMouseClicked
+
+    private void PunchChallengeButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PunchChallengeButton1MouseClicked
+        Main.setup(5);
+    }//GEN-LAST:event_PunchChallengeButton1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;

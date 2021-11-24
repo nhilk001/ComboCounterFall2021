@@ -8,6 +8,7 @@ import Modes.PunchChallengePanel;
 import Modes.Setup.ComboModeSetup;
 import Modes.Setup.StrengthModeSetup;
 import Modes.Setup.TimedModeSetup;
+import Modes.Setup.PunchChallengeSetup;
 import Modes.StrengthModePanel;
 import Multiplayer.MultiplayerForce;
 import Multiplayer.MultiplayerStrength;
@@ -236,16 +237,16 @@ public class Main {
                 Frame.setSize(768,1024);
                 Frame.setResizable(false);
                 Frame.repaint();
-             Frame.revalidate();
-               break;
-            //case 5:
-            //    Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            //    Frame.setContentPane(new PunchChallengeSetup());
-            //    Frame.setSize(768,1024);
-            //    Frame.setResizable(false);
-            //    Frame.repaint();
-            //    Frame.revalidate();
-            //    break;
+                Frame.revalidate();
+                break;
+            case 5:
+                Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                Frame.setContentPane(new PunchChallengeSetup());
+                Frame.setSize(768,1024);
+                Frame.setResizable(false);
+                Frame.repaint();
+                Frame.revalidate();
+                break;
         }
     }
     
