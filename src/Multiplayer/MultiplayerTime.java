@@ -460,6 +460,7 @@ public class MultiplayerTime extends javax.swing.JPanel {
         //Frame.setResizable(false);
         Main.currentPlayer = 1;
         Main.Frame.setContentPane(new TimedModePanel(0, 0));
+        Main.Frame.setSize(768,1024);
         Main.Frame.repaint();
         Main.Frame.revalidate();
 

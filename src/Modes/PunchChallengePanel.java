@@ -81,7 +81,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         AboutButton.setOpaque(false);
         AboutButton.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
-        AboutButton = new javax.swing.JButton();
         TopBar = new javax.swing.JPanel();
         ComboCounterTitle = new javax.swing.JLabel();
         BackButton = new javax.swing.JLabel();
@@ -167,15 +166,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
             }
         });
         SideBar.add(FeedbackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
-
-        AboutButton.setBackground(new java.awt.Color(51, 51, 56));
-        AboutButton.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        AboutButton.setForeground(new java.awt.Color(240, 240, 240));
-        AboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/aboutIcon.png"))); // NOI18N
-        AboutButton.setText(" About");
-        AboutButton.setBorder(null);
-        AboutButton.setContentAreaFilled(false);
-        SideBar.add(AboutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
 
         add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
 
@@ -440,9 +430,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         ValidPunchesLabel.setText(Integer.toString(validPunches));
         InvalidPunchesLabel.setText(Integer.toString(invalidPunches));
     }
-    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AboutButton;
     private javax.swing.JButton ActivityButton;
     private javax.swing.JLabel AverageForceLabel;
     private javax.swing.JLabel AverageForceTitle;
@@ -466,4 +454,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     private javax.swing.JLabel ValidPunchesLabel;
     private javax.swing.JLabel ValidPunchesTitle;
     // End of variables declaration//GEN-END:variables
+    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+    private javax.swing.JButton AboutButton = new javax.swing.JButton();
 }

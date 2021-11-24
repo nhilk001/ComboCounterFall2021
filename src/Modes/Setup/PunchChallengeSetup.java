@@ -506,7 +506,7 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
             // Code to create competition
         }*/
         // TODO must account for multiplayer mode
-        Main.createPunchChallengeMode(hours, minutes, seconds, thresholdForce);
+        Main.createPunchChallengeMode(1, 1, 1, 1);
 
     }//GEN-LAST:event_StartButtonMouseClicked
 

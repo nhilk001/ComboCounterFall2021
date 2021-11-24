@@ -395,9 +395,9 @@ public class ComboModeSetup extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartButton1MouseClicked
-                if (multiplayer == false)
-        Main.createComboMode();
-        else {
+        if (multiplayer == false) {
+            Main.createComboMode();
+        } else {
             Main.multiplayerTimed(numPlayers);
         }
     }//GEN-LAST:event_StartButton1MouseClicked
