@@ -31,7 +31,7 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     //////////////////////////////////////////////////////////////////
     public ActivityModePanel(ArrayList<Activity> activityList) {
         initComponents();
-        this.activityList = Main.db.getForceActivities(Main.username);
+        //this.activityList = Main.db.getForceActivities(Main.username);
         update();
 
         // Setting states
