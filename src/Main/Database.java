@@ -156,9 +156,9 @@ public class Database {
     public int insertComboActivity(String email, int totalForce,
             int timerSec, int timerMin, int punchNum, String time, String date) {
 
-        String query = "INSERT INTO forcemode (email, totalForce, timerSec, "
-                + ", punchNum) VALUES ('" + email + "', " + totalForce + ", "
-                + timerSec + ", " + timerMin +", " + punchNum+ ", " + time +", " + date+ ");";
+        String query = "INSERT INTO combomode (email, totalForce, timerSec, "
+                + "punchNum, timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
+                + timerSec + ", " + timerMin +", " + punchNum + ", '" + time +"', '" + date+ "');";
 
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
@@ -223,7 +223,6 @@ public class Database {
             ResultSet rs = stmt.getResultSet();
 
             while (rs.next()) {
-                int goalForce = rs.getInt("forceGoal");
                 int totalForce = rs.getInt("totalForce");
                 int min = rs.getInt("timerSec");
                 int sec = rs.getInt("timerMin");
@@ -231,7 +230,7 @@ public class Database {
                 String date = rs.getNString("datecreated");
                 //TODO correct activity object and line below
                 Activity act = new Activity(0, sec, time, date,
-                        "Force Mode", totalForce, goalForce);
+                        "Force Mode", totalForce, 0);//0 is place holder
                 activities.add(act);
             }
 
