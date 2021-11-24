@@ -1065,11 +1065,14 @@ public class ComboModePanel extends javax.swing.JPanel {
     private void ComboModeSaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeSaveButtonMouseClicked
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
 
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
         
-        Main.createActivity( timerMin, timerSec, localTime, localDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
+        //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
+        Main.db.insertComboActivity(Main.username , totalForce, timerSec, timerMin, 1, inTime, inDate);
         ResetComboPanelSetup();
     }//GEN-LAST:event_ComboModeSaveButtonMouseClicked
 

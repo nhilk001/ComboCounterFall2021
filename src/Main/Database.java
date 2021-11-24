@@ -35,7 +35,7 @@ public class Database {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
             String dbUrl = "jdbc:mysql://localhost/sys";
             String user = "root";
-            String pass = "323531n$H";
+            String pass = "";
             conn = DriverManager.getConnection(dbUrl, user, pass);
         } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
@@ -51,7 +51,7 @@ public class Database {
      */
     public int loginUser(String email, String password) {
         String query = "SELECT email FROM user WHERE email=? AND password=?";
-        
+
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
             stmt.setNString(2, password);
@@ -63,7 +63,7 @@ public class Database {
                     return 1;
                 }
             }
-            
+
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return 0;
@@ -81,9 +81,9 @@ public class Database {
      * @return 1 if complete 0 if not
      */
     public int registerUser(String email, String password, String age, String weight) {
-        
+
         String query = "INSERT INTO user (email, password, age, weight) VALUES (?,?,?,?);";
-        
+
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
             stmt.setNString(1, email);
             stmt.setNString(2, password);
@@ -91,7 +91,7 @@ public class Database {
             stmt.setNString(4, weight);
             stmt.executeUpdate();
             return 1;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -109,19 +109,19 @@ public class Database {
      */
     public int insertForceActivity(String email, int forceGoal, int totalForce,
             int timerSec, int timerMin, String time, String date) {
-        
+
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mm a");
         DateTimeFormatter dtfDate = DateTimeFormatter.ofPattern("mm:dd:yyyy a");
-        
+
         String query = "INSERT INTO forcemode (email, forceGoal, totalForce, timerSec, timerMin, "
-                + " timecreated, datecreated) VALUES ('" + email + "', " + forceGoal + ", " 
-                + totalForce + ", " + timerSec + ", " + timerMin + ", '" 
+                + " timecreated, datecreated) VALUES ('" + email + "', " + forceGoal + ", "
+                + totalForce + ", " + timerSec + ", " + timerMin + ", '"
                 + time + "', '" + date + "');";
-        
+
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
             return 1;
-            
+
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -142,11 +142,28 @@ public class Database {
         String query = "INSERT INTO forcemode (email, totalForce, timerSec, "
                 + "timerMin) VALUES ('" + email + "', " + totalForce + ", "
                 + timerSec + ", " + timerMin + ");";
-        
+
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
             return 1;
-            
+
+        } catch (SQLException e) {
+            System.out.println(e);
+            return 0;
+        }
+    }
+
+    public int insertComboActivity(String email, int totalForce,
+            int timerSec, int timerMin, int punchNum, String time, String date) {
+
+        String query = "INSERT INTO forcemode (email, totalForce, timerSec, "
+                + ", punchNum) VALUES ('" + email + "', " + totalForce + ", "
+                + timerSec + ", " + timerMin +", " + punchNum+ ", " + time +", " + date+ ");";
+
+        try ( Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(query);
+            return 1;
+
         } catch (SQLException e) {
             System.out.println(e);
             return 0;
@@ -162,13 +179,13 @@ public class Database {
     public ArrayList<Activity> getForceActivities(String email) {
         ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM forcemode WHERE email=? ;";
-        
+
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
             stmt.setNString(1, email);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            
+
             while (rs.next()) {
                 int goalForce = rs.getInt("forceGoal");
                 int totalForce = rs.getInt("totalForce");
@@ -177,13 +194,13 @@ public class Database {
                 String timeCreated = rs.getNString("timecreated");
                 String dateCreated = rs.getNString("datecreated");
                 //TODO correct activity object and line below
-                Activity act = new Activity(0, sec, timeCreated, dateCreated, 
+                Activity act = new Activity(0, sec, timeCreated, dateCreated,
                         "Force Mode", totalForce, goalForce);
                 activities.add(act);
             }
-            
+
             return activities;
-            
+
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return null;
@@ -198,13 +215,13 @@ public class Database {
     public ArrayList<Activity> getTimedActivities(String email) {
         ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM timedmode WHERE email=? ;";
-        
+
         try ( PreparedStatement stmt = conn.prepareStatement(query)) {
-            
+
             stmt.setNString(1, email);
             stmt.execute();
             ResultSet rs = stmt.getResultSet();
-            
+
             while (rs.next()) {
                 int goalForce = rs.getInt("forceGoal");
                 int totalForce = rs.getInt("totalForce");
@@ -213,13 +230,13 @@ public class Database {
                 String time = rs.getNString("timecreated");
                 String date = rs.getNString("datecreated");
                 //TODO correct activity object and line below
-                Activity act = new Activity(0, sec, time, date, 
+                Activity act = new Activity(0, sec, time, date,
                         "Force Mode", totalForce, goalForce);
                 activities.add(act);
             }
-            
+
             return activities;
-            
+
         } catch (SQLException e) {
             System.out.println(e + "login error");
             return null;

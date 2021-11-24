@@ -113,6 +113,7 @@ public class Main {
         Frame.repaint();
         Frame.revalidate();
     }
+    
     public static void createActivity()
     {
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
