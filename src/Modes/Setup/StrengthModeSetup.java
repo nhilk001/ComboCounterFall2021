@@ -214,6 +214,11 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         jPanel2.add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
 
         PunchChallengeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
+        PunchChallengeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PunchChallengeButtonMouseClicked(evt);
+            }
+        });
         jPanel2.add(PunchChallengeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 30, 30));
 
         ForceModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
@@ -393,16 +398,14 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 22, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -653,7 +656,11 @@ public class StrengthModeSetup extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
-    private javax.swing.JPanel jPanel1;
+    private void PunchChallengeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PunchChallengeButtonMouseClicked
+        Main.setup(5);
+    }//GEN-LAST:event_PunchChallengeButtonMouseClicked
+
+    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;

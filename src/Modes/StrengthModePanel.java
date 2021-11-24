@@ -27,6 +27,8 @@ public class StrengthModePanel extends javax.swing.JPanel {
      */
     public StrengthModePanel() {
         initComponents();
+        SideBar.setVisible(false);
+        
     }
 public void update()
     {

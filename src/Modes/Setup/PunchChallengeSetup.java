@@ -54,15 +54,22 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         ComboCounterTitle = new javax.swing.JLabel();
         SidebarButton = new javax.swing.JLabel();
         SideBar = new javax.swing.JPanel();
+        jPanel1.setVisible(false);
         SettingsButton = new javax.swing.JButton();
+        About_Button.setOpaque(false);
+        About_Button.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         ProfileButton = new javax.swing.JButton();
+        About_Button.setOpaque(false);
+        About_Button.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         ActivityButton = new javax.swing.JButton();
+        About_Button.setOpaque(false);
+        About_Button.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         FeedbackButton = new javax.swing.JButton();
-        //jButton1.setBorderPainted(false);
-        AboutButton = new javax.swing.JButton();
+        About_Button.setOpaque(false);
+        About_Button.setContentAreaFilled(false);
         //jButton1.setBorderPainted(false);
         PunchChallengeTitle = new javax.swing.JLabel();
         ComboModeButton = new javax.swing.JLabel();
@@ -184,20 +191,6 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         });
         SideBar.add(FeedbackButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        AboutButton.setBackground(new java.awt.Color(51, 51, 56));
-        AboutButton.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
-        AboutButton.setForeground(new java.awt.Color(240, 240, 240));
-        AboutButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/aboutIcon.png"))); // NOI18N
-        AboutButton.setText(" About");
-        AboutButton.setBorder(null);
-        AboutButton.setContentAreaFilled(false);
-        AboutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AboutButtonMouseClicked(evt);
-            }
-        });
-        SideBar.add(AboutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
-
         add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
 
         PunchChallengeTitle.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
@@ -207,6 +200,11 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         add(PunchChallengeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 310, 50));
 
         ComboModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
+        ComboModeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ComboModeButtonMouseClicked(evt);
+            }
+        });
         add(ComboModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 30, 30));
 
         ForceModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
@@ -226,6 +224,11 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         add(TimedModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 30, 30));
 
         StrengthModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
+        StrengthModeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                StrengthModeButtonMouseClicked(evt);
+            }
+        });
         add(StrengthModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 30, 30));
 
         PunchChallengeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png"))); // NOI18N
@@ -508,11 +511,6 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_StartButtonMouseClicked
 
     // TODO
-    private void AboutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutButtonMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_AboutButtonMouseClicked
-
-    // TODO
     private void SettingsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsButtonMouseClicked
         Main.transitionToPage(2);
     }//GEN-LAST:event_SettingsButtonMouseClicked
@@ -566,6 +564,14 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         Main.setup(2);
     }//GEN-LAST:event_ForceModeButtonMouseClicked
 
+    private void ComboModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ComboModeButtonMouseClicked
+        Main.setup(1);
+    }//GEN-LAST:event_ComboModeButtonMouseClicked
+
+    private void StrengthModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StrengthModeButtonMouseClicked
+        Main.setup(4);
+    }//GEN-LAST:event_StrengthModeButtonMouseClicked
+
    
     private void secondsPlus() {
         if (seconds < 59) {
@@ -613,8 +619,8 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
         HoursLabel.setText(hoursString);
     }
     
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AboutButton;
     private javax.swing.JButton ActivityButton;
     private javax.swing.JLabel ComboCounterTitle;
     private javax.swing.JLabel ComboModeButton;
@@ -654,4 +660,7 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
     private javax.swing.JPanel TopBar;
     private javax.swing.JLabel TrainingButton;
     // End of variables declaration//GEN-END:variables
+   private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
+   private javax.swing.JButton About_Button = new javax.swing.JButton();
+   
 }
