@@ -461,6 +461,7 @@ public class MultiplayerStrength extends javax.swing.JPanel {
         //Frame.setResizable(false);
         Main.currentPlayer = 1;
         Main.Frame.setContentPane(new StrengthModePanel());
+        Main.Frame.setSize(768,1024);
         Main.Frame.repaint();
         Main.Frame.revalidate();
 

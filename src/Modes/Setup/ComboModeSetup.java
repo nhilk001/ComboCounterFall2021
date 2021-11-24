@@ -455,7 +455,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_Training_Button1MouseClicked
 
     private void Competition_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Competition_Button1MouseClicked
-                if (multiplayer == false)
+                if (multiplayer == false) // hi
         {
             multiplayer = true ;
             Competition_Button1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED));
