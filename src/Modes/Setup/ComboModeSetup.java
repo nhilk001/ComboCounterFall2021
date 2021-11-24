@@ -52,7 +52,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
         NumPunchesMinus1 = new javax.swing.JLabel();
         NumOfPunches = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -127,43 +126,37 @@ public class ComboModeSetup extends javax.swing.JPanel {
 
         add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 86, -1, -1));
 
-        jPanel3.setBackground(new java.awt.Color(0, 0, 55));
-        jPanel3.setMaximumSize(new java.awt.Dimension(768, 1024));
-        jPanel3.setMinimumSize(new java.awt.Dimension(768, 1024));
-        jPanel3.setPreferredSize(new java.awt.Dimension(768, 1024));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
         NumPunchesMinus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circleMinusIcon.png"))); // NOI18N
         NumPunchesMinus1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 NumPunchesMinus1MouseClicked(evt);
             }
         });
-        jPanel3.add(NumPunchesMinus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, 40));
+        add(NumPunchesMinus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 290, -1, 40));
 
         NumOfPunches.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         NumOfPunches.setForeground(new java.awt.Color(240, 240, 240));
         NumOfPunches.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumOfPunches.setText("1");
-        jPanel3.add(NumOfPunches, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 50));
+        add(NumOfPunches, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 280, 120, 50));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(240, 240, 240));
         jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel10.setText("Player Setting");
-        jPanel3.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 260, 50));
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 470, 260, 50));
 
         NumOfPlayersPunchesText.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
         NumOfPlayersPunchesText.setForeground(new java.awt.Color(240, 240, 240));
         NumOfPlayersPunchesText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumOfPlayersPunchesText.setText("      # of Punches:");
-        jPanel3.add(NumOfPlayersPunchesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 290, 50));
+        add(NumOfPlayersPunchesText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, 290, 50));
 
         ComboModeTitle.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
         ComboModeTitle.setForeground(new java.awt.Color(240, 240, 240));
         ComboModeTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         ComboModeTitle.setText("Combo Mode");
-        jPanel3.add(ComboModeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 240, 50));
+        add(ComboModeTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 110, 240, 50));
 
         StartButton1.setBackground(new java.awt.Color(51, 51, 56));
         StartButton1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
@@ -176,19 +169,19 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 StartButton1MouseClicked(evt);
             }
         });
-        jPanel3.add(StartButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 790, 180, 70));
+        add(StartButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 790, 180, 70));
 
         NumOfPlayersText2.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
         NumOfPlayersText2.setForeground(new java.awt.Color(240, 240, 240));
         NumOfPlayersText2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumOfPlayersText2.setText("# of Players:");
-        jPanel3.add(NumOfPlayersText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, 220, 50));
+        add(NumOfPlayersText2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 680, 220, 50));
 
         NumOfPlayers.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         NumOfPlayers.setForeground(new java.awt.Color(240, 240, 240));
         NumOfPlayers.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         NumOfPlayers.setText("2");
-        jPanel3.add(NumOfPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 680, 60, 50));
+        add(NumOfPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 680, 60, 50));
 
         NumPlayersPlus2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circlePlusIcon.png"))); // NOI18N
         NumPlayersPlus2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -196,7 +189,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 NumPlayersPlus2MouseClicked(evt);
             }
         });
-        jPanel3.add(NumPlayersPlus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 680, -1, 40));
+        add(NumPlayersPlus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 680, -1, 40));
 
         SideBar.setBackground(new java.awt.Color(51, 51, 56));
         SideBar.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 5, 5, 0, new java.awt.Color(0, 0, 0)));
@@ -209,11 +202,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
         About_Button.setText(" About");
         About_Button.setBorder(null);
         About_Button.setContentAreaFilled(false);
-        About_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                About_ButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(About_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
 
         Settings_Button.setBackground(new java.awt.Color(51, 51, 56));
@@ -225,11 +213,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
         Settings_Button.setContentAreaFilled(false);
         Settings_Button.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Settings_Button.setFocusPainted(false);
-        Settings_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Settings_ButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(Settings_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 60));
 
         Profile_Button.setBackground(new java.awt.Color(51, 51, 56));
@@ -239,11 +222,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
         Profile_Button.setText(" Profile");
         Profile_Button.setBorder(null);
         Profile_Button.setContentAreaFilled(false);
-        Profile_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Profile_ButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(Profile_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, 150, 60));
 
         Activity_Button.setBackground(new java.awt.Color(51, 51, 56));
@@ -253,11 +231,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
         Activity_Button.setText(" Activity");
         Activity_Button.setBorder(null);
         Activity_Button.setContentAreaFilled(false);
-        Activity_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Activity_ButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(Activity_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 160, 60));
 
         Feedback_Button.setBackground(new java.awt.Color(51, 51, 56));
@@ -267,14 +240,9 @@ public class ComboModeSetup extends javax.swing.JPanel {
         Feedback_Button.setText(" Feedback");
         Feedback_Button.setBorder(null);
         Feedback_Button.setContentAreaFilled(false);
-        Feedback_Button.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                Feedback_ButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        jPanel3.add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
+        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
 
         NumPlayersMinus2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circleMinusIcon.png"))); // NOI18N
         NumPlayersMinus2.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -282,7 +250,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 NumPlayersMinus2MouseClicked(evt);
             }
         });
-        jPanel3.add(NumPlayersMinus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, -1, 40));
+        add(NumPlayersMinus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 680, -1, 40));
 
         Training_Button1.setBackground(new java.awt.Color(51, 51, 56));
         Training_Button1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -295,7 +263,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 Training_Button1MouseClicked(evt);
             }
         });
-        jPanel3.add(Training_Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, 210, 60));
+        add(Training_Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 580, 210, 60));
 
         Competition_Button1.setBackground(new java.awt.Color(51, 51, 56));
         Competition_Button1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
@@ -308,13 +276,18 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 Competition_Button1MouseClicked(evt);
             }
         });
-        jPanel3.add(Competition_Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 210, 60));
+        add(Competition_Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 580, 210, 60));
 
         ComboModeB.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/filledCircleIcon.png"))); // NOI18N
-        jPanel3.add(ComboModeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 30, 30));
+        add(ComboModeB, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 190, 30, 30));
 
         PunchChallengeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
-        jPanel3.add(PunchChallengeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 30, 30));
+        PunchChallengeButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                PunchChallengeButtonMouseClicked(evt);
+            }
+        });
+        add(PunchChallengeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 190, 30, 30));
 
         TimedModeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
         TimedModeButton.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -322,7 +295,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 TimedModeButtonMouseClicked(evt);
             }
         });
-        jPanel3.add(TimedModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 30, 30));
+        add(TimedModeButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 190, 30, 30));
 
         StrengthModeButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
         StrengthModeButton1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -330,7 +303,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 StrengthModeButton1MouseClicked(evt);
             }
         });
-        jPanel3.add(StrengthModeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 30, 30));
+        add(StrengthModeButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, 30, 30));
 
         ForceModeButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/emptyCircleIcon.png"))); // NOI18N
         ForceModeButton3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -338,7 +311,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 ForceModeButton3MouseClicked(evt);
             }
         });
-        jPanel3.add(ForceModeButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));
+        add(ForceModeButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 190, 30, 30));
 
         jPanel4.setBackground(new java.awt.Color(51, 51, 56));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -347,11 +320,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
         SidebarButton.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         SidebarButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/menuIcon.png"))); // NOI18N
         SidebarButton.setOpaque(true);
-        SidebarButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                SidebarButtonMouseClicked(evt);
-            }
-        });
         jPanel4.add(SidebarButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 10, 60, 55));
 
         ComboCounterTitle.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
@@ -359,19 +327,19 @@ public class ComboModeSetup extends javax.swing.JPanel {
         ComboCounterTitle.setText("ComboCounter");
         jPanel4.add(ComboCounterTitle, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
-        jPanel3.add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 755, 80));
+        add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 755, 80));
 
         PunchForceGoalText.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
         PunchForceGoalText.setForeground(new java.awt.Color(240, 240, 240));
         PunchForceGoalText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PunchForceGoalText.setText("Punch Force Goal:");
-        jPanel3.add(PunchForceGoalText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 290, 50));
+        add(PunchForceGoalText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 330, 290, 50));
 
         PunchForceGoal.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         PunchForceGoal.setForeground(new java.awt.Color(240, 240, 240));
         PunchForceGoal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PunchForceGoal.setText("0");
-        jPanel3.add(PunchForceGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 120, 50));
+        add(PunchForceGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 330, 120, 50));
 
         PunchForceGoalPlus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circlePlusIcon.png"))); // NOI18N
         PunchForceGoalPlus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -379,7 +347,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 PunchForceGoalPlusMouseClicked(evt);
             }
         });
-        jPanel3.add(PunchForceGoalPlus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, 40));
+        add(PunchForceGoalPlus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 340, -1, 40));
 
         PunchForceGoalMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circleMinusIcon.png"))); // NOI18N
         PunchForceGoalMinus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -387,19 +355,19 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 PunchForceGoalMinusMouseClicked(evt);
             }
         });
-        jPanel3.add(PunchForceGoalMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, 40));
+        add(PunchForceGoalMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 340, -1, 40));
 
         PunchTimeGoalText.setFont(new java.awt.Font("Tahoma", 0, 32)); // NOI18N
         PunchTimeGoalText.setForeground(new java.awt.Color(240, 240, 240));
         PunchTimeGoalText.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PunchTimeGoalText.setText(" Punch Time Goal:");
-        jPanel3.add(PunchTimeGoalText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 290, 50));
+        add(PunchTimeGoalText, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 290, 50));
 
         PunchTimeGoal.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
         PunchTimeGoal.setForeground(new java.awt.Color(240, 240, 240));
         PunchTimeGoal.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         PunchTimeGoal.setText("0");
-        jPanel3.add(PunchTimeGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 120, 50));
+        add(PunchTimeGoal, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 380, 120, 50));
 
         PunchTimeGoalPlus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circlePlusIcon.png"))); // NOI18N
         PunchTimeGoalPlus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -407,7 +375,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 PunchTimeGoalPlusMouseClicked(evt);
             }
         });
-        jPanel3.add(PunchTimeGoalPlus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, 40));
+        add(PunchTimeGoalPlus, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 390, -1, 40));
 
         PunchTimeGoalMinus.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circleMinusIcon.png"))); // NOI18N
         PunchTimeGoalMinus.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -415,7 +383,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 PunchTimeGoalMinusMouseClicked(evt);
             }
         });
-        jPanel3.add(PunchTimeGoalMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, 40));
+        add(PunchTimeGoalMinus, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 390, -1, 40));
 
         NumPunchesPlus1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/circlePlusIcon.png"))); // NOI18N
         NumPunchesPlus1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -423,9 +391,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
                 NumPunchesPlus1MouseClicked(evt);
             }
         });
-        jPanel3.add(NumPunchesPlus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
-
-        add(jPanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        add(NumPunchesPlus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 290, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void StartButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartButton1MouseClicked
@@ -602,6 +568,10 @@ public class ComboModeSetup extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
+    private void PunchChallengeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PunchChallengeButtonMouseClicked
+        Main.setup(5);
+    }//GEN-LAST:event_PunchChallengeButtonMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
@@ -639,7 +609,6 @@ public class ComboModeSetup extends javax.swing.JPanel {
     private javax.swing.JLabel Training_Button1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -175,11 +175,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         AboutButton.setText(" About");
         AboutButton.setBorder(null);
         AboutButton.setContentAreaFilled(false);
-        AboutButton.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                AboutButtonMouseClicked(evt);
-            }
-        });
         SideBar.add(AboutButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, 160, 60));
 
         add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
@@ -376,14 +371,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackButtonMouseClicked
 
     // TODO
-    private void AboutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AboutButtonMouseClicked
-        /*paused = true;
-        int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION)
-           // Page to transition to*/
-    }//GEN-LAST:event_AboutButtonMouseClicked
-
-    // TODO
     private void SettingsButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SettingsButtonMouseClicked
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION) Main.transitionToPage(2);
@@ -453,7 +440,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         ValidPunchesLabel.setText(Integer.toString(validPunches));
         InvalidPunchesLabel.setText(Integer.toString(invalidPunches));
     }
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AboutButton;
     private javax.swing.JButton ActivityButton;

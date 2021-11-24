@@ -694,42 +694,6 @@ public class TimedModeSetup extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
-    private void Timer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Timer1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Timer1MouseClicked
-
-    private void NumPlayersPlus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumPlayersPlus1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NumPlayersPlus1MouseClicked
-
-    private void NumPlayersMinus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumPlayersMinus1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_NumPlayersMinus1MouseClicked
-
-    private void StartButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_StartButton1MouseClicked
-
-    private void Competition_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Competition_Button1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Competition_Button1MouseClicked
-
-    private void Training_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Training_Button1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Training_Button1MouseClicked
-
-    private void TimerMinus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimerMinus1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TimerMinus1MouseClicked
-
-    private void TimerPlus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimerPlus1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TimerPlus1MouseClicked
-
-    private void SidebarButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButton1MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SidebarButton1MouseClicked
-
     private void StrengthModeButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StrengthModeButtonMouseClicked
         // TODO add your handling code here:
         Main.setup(4);
@@ -748,6 +712,42 @@ public class TimedModeSetup extends javax.swing.JPanel {
     private void PunchChallengeButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PunchChallengeButton1MouseClicked
         Main.setup(5);
     }//GEN-LAST:event_PunchChallengeButton1MouseClicked
+
+    private void TimerPlus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimerPlus1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TimerPlus1MouseClicked
+
+    private void TimerMinus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TimerMinus1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TimerMinus1MouseClicked
+
+    private void Training_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Training_Button1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Training_Button1MouseClicked
+
+    private void Competition_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Competition_Button1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Competition_Button1MouseClicked
+
+    private void StartButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_StartButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_StartButton1MouseClicked
+
+    private void NumPlayersMinus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumPlayersMinus1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumPlayersMinus1MouseClicked
+
+    private void NumPlayersPlus1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_NumPlayersPlus1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_NumPlayersPlus1MouseClicked
+
+    private void Timer1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Timer1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Timer1MouseClicked
+
+    private void SidebarButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SidebarButton1MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
