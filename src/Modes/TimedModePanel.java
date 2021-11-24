@@ -382,14 +382,17 @@ public class TimedModePanel extends javax.swing.JPanel {
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
 
         DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
         LocalTime localTime = LocalTime.now();
-        Main.db.insertTimedActivity(Main.username, totalForce, timerSec, timerMin);
+        String inTime = localTime.format(time);
+        
+        Main.db.insertTimedActivity(Main.username, totalForce, timerSec, timerMin,inDate,inTime);
         //TODO: remove createActivity
-        Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
+        //Main.createActivity(initialMin, initialSec, localTime, localDate, "Timed Mode", totalForce);
     }//GEN-LAST:event_SaveButtonMouseClicked
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel1 = new javax.swing.JPanel();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
     private javax.swing.JButton Activity_Button;

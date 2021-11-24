@@ -137,18 +137,18 @@ public class Database {
      * @return
      */
     public int insertTimedActivity(String email, int totalForce,
-            int timerSec, int timerMin) {
+            int timerSec, int timerMin, String inDate, String inTime) {
 
-        String query = "INSERT INTO forcemode (email, totalForce, timerSec, "
-                + "timerMin) VALUES ('" + email + "', " + totalForce + ", "
-                + timerSec + ", " + timerMin + ");";
+        String query = "INSERT INTO timedmode (email, totalForce, timerSec, "
+                + "timerMin, timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
+                + timerSec + ", " + timerMin + ", '" + inTime+ "', '" + inDate+ "');";
 
         try ( Statement stmt = conn.createStatement()) {
             stmt.executeUpdate(query);
             return 1;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e + "timed mode error");
             return 0;
         }
     }
