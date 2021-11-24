@@ -241,4 +241,34 @@ public class Database {
             return null;
         }
     }
+    public ArrayList<Activity> getComboActivities(String email) {
+        ArrayList<Activity> activities = new ArrayList(10);
+        String query = "SELECT * FROM combomode WHERE email=? ;";
+
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                int totalForce = rs.getInt("totalForce");
+                int min = rs.getInt("timerSec");
+                int sec = rs.getInt("timerMin");
+                String time = rs.getNString("timecreated");
+                String date = rs.getNString("datecreated");
+                int punchNum = rs.getInt("punchNum");
+                //TODO correct activity object and line below
+                Activity act = new Activity(0, sec, time, date,
+                        "Combo Mode", totalForce, punchNum);//0 is place holder
+                activities.add(act);
+            }
+
+            return activities;
+
+        } catch (SQLException e) {
+            System.out.println(e + "login error");
+            return null;
+        }
+    }
 }
