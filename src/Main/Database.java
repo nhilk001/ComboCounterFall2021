@@ -188,7 +188,7 @@ public class Database {
     public int insertPunchActivity(String email, int threshold, int numValid, int numInvalid,
             int timerSec, int timerMin, String time, String date) {
 
-        String query = "INSERT INTO punchmode (email, threshold, vaild, invalid, timerSec, "
+        String query = "INSERT INTO punchmode (email, threshold, valid, invalid, timerSec, timerMin, "
                 + " timecreated, datecreated) VALUES ('" + email + "', " + threshold + ", " + numValid+", " + numInvalid+", " 
                 + timerSec + ", " + timerMin  + ", '" + time +"', '" + date+ "');";
 
