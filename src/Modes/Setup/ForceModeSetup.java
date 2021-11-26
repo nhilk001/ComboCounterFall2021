@@ -603,6 +603,7 @@ public class ForceModeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_Profile_Button1MouseClicked
 
     private void Activity_Button1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_Button1MouseClicked
+        Main.ActivityHistory();
         // TODO add your handling code here:
     }//GEN-LAST:event_Activity_Button1MouseClicked
 

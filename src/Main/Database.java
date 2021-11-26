@@ -33,9 +33,9 @@ public class Database {
     public Database() {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String dbUrl = "jdbc:mysql://localhost/sys";
+            String dbUrl = "jdbc:mysql://localhost/combocounter";
             String user = "root";
-            String pass = "";
+            String pass = "@A1234567b";
             conn = DriverManager.getConnection(dbUrl, user, pass);
         } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
@@ -303,6 +303,8 @@ public class Database {
             return null;
         }
     }
+    
+    
     public ArrayList<Activity> getStrengthActivities(String email) {
         ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM strengthmode WHERE email=? ;";
@@ -331,5 +333,40 @@ public class Database {
             System.out.println(e + "get strength record error");
             return null;
         }
+    }
+    
+    public String DisplayForceHistory(){
+        String finalDisplay = "";
+        String sql = "SELECT * " +
+                     "FROM combocounter.forcemode";
+       finalDisplay = "index" + "\t" + "email)"  + "\t" +
+                                  "forceGoal"  + "\t" +
+                                   "totalForce" + "\t" +
+                                   "timerSec" + "\t" +
+                                   "timerMin"+ "\t" +
+                                   "timecreated"+ "\t" +
+                                   "datecreated"+ "\n";
+        
+        try (
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)) {
+           
+            
+            // loop through the result set
+            while (rs.next()) {
+                finalDisplay = finalDisplay + rs.getString("index") + "\t" + 
+                                   rs.getString("email")  + "\t" +
+                                   rs.getString("forceGoal")  + "\t" +
+                                   rs.getString("totalForce")  + "\t" +
+                                   rs.getString("timerSec")  + "\t" +
+                                   rs.getString("timerMin")  + "\t" +
+                                   rs.getString("timecreated")  + "\t" +
+                                   rs.getString("datecreated") + "\n";
+                    
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
     }
 }

@@ -522,6 +522,7 @@ public class PunchChallengeSetup extends javax.swing.JPanel {
 
     // TODO
     private void ActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActivityButtonMouseClicked
+        Main.ActivityHistory();
         // TODO add your handling code here:
     }//GEN-LAST:event_ActivityButtonMouseClicked
 
