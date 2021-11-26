@@ -24,7 +24,8 @@ public class Activity {
     private String mode;
     private int totalForce;
     private int goalForce;
-
+    
+    //
     public Activity(int min, int sec, String time, String date, String mode, int totalForce) {
         this.min = min;
         this.sec = sec;
@@ -43,6 +44,7 @@ public class Activity {
         this.totalForce = totalForce;
         this.goalForce = goalForce;
     }
+    
 /*
     
     public Activity(int timeElapsed, int sec, LocalTime time, LocalDate date, String mode, int totalForce, int goalForce) {
