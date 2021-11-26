@@ -93,7 +93,7 @@ public class Database {
             return 1;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e + " register user error");
             return 0;
         }
     }
@@ -123,7 +123,7 @@ public class Database {
             return 1;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e + " insert force error");
             return 0;
         }
     }
@@ -148,7 +148,7 @@ public class Database {
             return 1;
 
         } catch (SQLException e) {
-            System.out.println(e + "timed mode error");
+            System.out.println(e + " insert timed mode error");
             return 0;
         }
     }
@@ -165,11 +165,42 @@ public class Database {
             return 1;
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println(e+ " insert Combo error");
             return 0;
         }
     }
+    public int insertStrengthActivity(String email, int totalForce,
+            int timerSec, int timerMin, String time, String date) {
 
+        String query = "INSERT INTO combomode (email, totalForce, timerSec, "
+                + " timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
+                + timerSec + ", " + timerMin  + ", '" + time +"', '" + date+ "');";
+
+        try ( Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(query);
+            return 1;
+
+        } catch (SQLException e) {
+            System.out.println(e+ " insert Strength error");
+            return 0;
+        }
+    }
+    public int insertPunchActivity(String email, int threshold, int numValid, int numInvalid,
+            int timerSec, int timerMin, String time, String date) {
+
+        String query = "INSERT INTO combomode (email, threshold, vaild, invalid, timerSec, "
+                + " timecreated, datecreated) VALUES ('" + email + "', " + threshold + ", " + numValid+", " + numInvalid+", " 
+                + timerSec + ", " + timerMin  + ", '" + time +"', '" + date+ "');";
+
+        try ( Statement stmt = conn.createStatement()) {
+            stmt.executeUpdate(query);
+            return 1;
+
+        } catch (SQLException e) {
+            System.out.println(e + " insert punch error" );
+            return 0;
+        }
+    }
     /**
      * Gets all entries in forcemode table that belong to user ided by email
      *
@@ -202,7 +233,7 @@ public class Database {
             return activities;
 
         } catch (SQLException e) {
-            System.out.println(e + "login error");
+            System.out.println(e + "get force error");
             return null;
         }
     }
@@ -237,7 +268,67 @@ public class Database {
             return activities;
 
         } catch (SQLException e) {
-            System.out.println(e + "login error");
+            System.out.println(e + "get timed error");
+            return null;
+        }
+    }
+    public ArrayList<Activity> getPunchActivities(String email) {
+        ArrayList<Activity> activities = new ArrayList(10);
+        String query = "SELECT * FROM punchmode WHERE email=? ;";
+
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                int threshold = rs.getInt("threshold");
+                int numValid = rs.getInt("valid");
+                int numInvalid = rs.getInt("inValid");
+                int min = rs.getInt("timerSec");
+                int sec = rs.getInt("timerMin");
+                String time = rs.getNString("timecreated");
+                String date = rs.getNString("datecreated");
+                //TODO correct activity object and line below
+                Activity act = new Activity(0, sec, time, date,
+                        "Punch Mode", threshold, 0);//0 is place holder
+                activities.add(act);
+            }
+
+            return activities;
+
+        } catch (SQLException e) {
+            System.out.println(e + "get punch error");
+            return null;
+        }
+    }
+    public ArrayList<Activity> getStrengthActivities(String email) {
+        ArrayList<Activity> activities = new ArrayList(10);
+        String query = "SELECT * FROM strengthmode WHERE email=? ;";
+
+        try ( PreparedStatement stmt = conn.prepareStatement(query)) {
+
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+
+            while (rs.next()) {
+                int totalForce = rs.getInt("totalforce");
+                int min = rs.getInt("timerSec");
+                int sec = rs.getInt("timerMin");
+                String time = rs.getNString("timecreated");
+                String date = rs.getNString("datecreated");
+                //TODO correct activity object and line below
+                Activity act = new Activity(0, sec, time, date,
+                        "Strength Mode", totalForce, 0);//0 is place holder
+                activities.add(act);
+            }
+
+            return activities;
+
+        } catch (SQLException e) {
+            System.out.println(e + "get strength record error");
             return null;
         }
     }
