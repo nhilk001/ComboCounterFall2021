@@ -6,6 +6,9 @@
 package Modes;
 import Main.Main;
 import static Modes.ForceModePanel.generateRandNums;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JOptionPane;
 /**
  *
@@ -205,6 +208,11 @@ public void update()
         jPanel3.add(ResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 80, 80));
 
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+        });
         jPanel3.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 80, 80));
 
         NextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nextPlayerIcon.png"))); // NOI18N
@@ -420,6 +428,19 @@ public void update()
     private void Activity_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Activity_ButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Activity_ButtonActionPerformed
+
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
+
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
+        
+        Main.db.insertStrengthActivity(Main.username , totalForce, timerSec, timerMin, inTime, inDate);
+        
+    }//GEN-LAST:event_SaveButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

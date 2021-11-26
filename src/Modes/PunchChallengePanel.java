@@ -2,6 +2,9 @@ package Modes;
 
 import Main.Main;
 import static java.lang.Thread.sleep;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -258,6 +261,11 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         ControlPanel.add(PlayPauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 300, 290));
 
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+        });
         ControlPanel.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 80, 80));
 
         ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/retryIcon.png"))); // NOI18N
@@ -408,6 +416,20 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
             Main.sidebarOpen = false ;
         }
     }//GEN-LAST:event_SidebarButtonMouseClicked
+
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
+
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
+        
+        //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
+        Main.db.insertPunchActivity(Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate);
+        
+    }//GEN-LAST:event_SaveButtonMouseClicked
 
     private int[] fillArray(int[] array, int max) {
     Random randomGenerator = new Random();
