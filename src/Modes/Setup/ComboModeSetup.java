@@ -231,6 +231,11 @@ public class ComboModeSetup extends javax.swing.JPanel {
         Activity_Button.setText(" Activity");
         Activity_Button.setBorder(null);
         Activity_Button.setContentAreaFilled(false);
+        Activity_Button.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Activity_ButtonMouseClicked(evt);
+            }
+        });
         SideBar.add(Activity_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 220, 160, 60));
 
         Feedback_Button.setBackground(new java.awt.Color(51, 51, 56));
@@ -507,6 +512,7 @@ public class ComboModeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         // TODO add your handling code here:
     }//GEN-LAST:event_Activity_ButtonMouseClicked
 
