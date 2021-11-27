@@ -1,6 +1,7 @@
 package Modes;
 
 import Main.Main;
+import java.awt.Color;
 import static java.lang.Thread.sleep;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -72,6 +73,12 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         SidebarButton1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
+        jButtonALLModes = new javax.swing.JButton();
+        forceMode = new javax.swing.JButton();
+        timeMode = new javax.swing.JButton();
+        comboMode = new javax.swing.JButton();
+        punchMode = new javax.swing.JButton();
+        strenghMode = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 55));
         jPanel1.setMaximumSize(new java.awt.Dimension(768, 1024));
@@ -117,7 +124,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
                 Settings_ButtonMouseClicked(evt);
             }
         });
-        SideBar.add(Settings_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 190, 60));
+        SideBar.add(Settings_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 190, 60));
 
         Profile_Button.setBackground(new java.awt.Color(51, 51, 56));
         Profile_Button.setFont(new java.awt.Font("Tahoma", 0, 30)); // NOI18N
@@ -161,7 +168,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         });
         SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(505, 80, 250, 530));
+        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 250, 530));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 56));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -240,7 +247,66 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTextArea1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 650, 640));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 650, 740));
+
+        jButtonALLModes.setText("All");
+        jButtonALLModes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonALLModesMouseClicked(evt);
+            }
+        });
+        jButtonALLModes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonALLModesActionPerformed(evt);
+            }
+        });
+        add(jButtonALLModes, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 100, -1, -1));
+
+        forceMode.setText("Force Mode");
+        forceMode.setToolTipText("");
+        forceMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                forceModeMouseClicked(evt);
+            }
+        });
+        forceMode.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                forceModeActionPerformed(evt);
+            }
+        });
+        add(forceMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 100, -1, -1));
+
+        timeMode.setText("Time Mode");
+        timeMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                timeModeMouseClicked(evt);
+            }
+        });
+        add(timeMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 100, -1, -1));
+
+        comboMode.setText("Combo Mode");
+        comboMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comboModeMouseClicked(evt);
+            }
+        });
+        add(comboMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 100, -1, -1));
+
+        punchMode.setText("Punch Mode");
+        punchMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                punchModeMouseClicked(evt);
+            }
+        });
+        add(punchMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 100, -1, -1));
+
+        strenghMode.setText("Strengh Mode");
+        strenghMode.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                strenghModeMouseClicked(evt);
+            }
+        });
+        add(strenghMode, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void BackButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BackButtonMouseClicked
@@ -301,12 +367,94 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackButton1MouseClicked
 
     private void jTextArea1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextArea1PropertyChange
-        jTextArea1.setText(Main.db.DisplayForceHistory());
+        jTextArea1.setText(Main.db.DisplayForceHistory() + Main.db.DisplayTimeHistory());
+        jButtonALLModes.setBackground(Color.lightGray);
         
-        
+        forceMode.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
         //Main.db.
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextArea1PropertyChange
+
+    private void jButtonALLModesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonALLModesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonALLModesActionPerformed
+
+    private void forceModeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_forceModeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forceModeActionPerformed
+
+    private void jButtonALLModesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonALLModesMouseClicked
+        // TODO add your handling code here:
+        jTextArea1.setText(Main.db.DisplayForceHistory() + Main.db.DisplayTimeHistory());
+        jButtonALLModes.setBackground(Color.lightGray);
+        
+        forceMode.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_jButtonALLModesMouseClicked
+
+    private void forceModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forceModeMouseClicked
+        jTextArea1.setText(Main.db.DisplayForceHistory());
+        forceMode.setBackground(Color.lightGray);
+        
+        jButtonALLModes.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_forceModeMouseClicked
+
+    private void timeModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeModeMouseClicked
+        jTextArea1.setText(Main.db.DisplayTimeHistory());
+        timeMode.setBackground(Color.lightGray);
+        
+        jButtonALLModes.setBackground(new Color(240,240,240));
+        forceMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
+        // TODO add your handling code here:
+    }//GEN-LAST:event_timeModeMouseClicked
+
+    private void strenghModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strenghModeMouseClicked
+        // TODO add your handling code here:
+        strenghMode.setBackground(Color.lightGray);
+        
+        jButtonALLModes.setBackground(new Color(240,240,240));
+        forceMode.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_strenghModeMouseClicked
+
+    private void punchModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_punchModeMouseClicked
+        // TODO add your handling code here:
+        punchMode.setBackground(Color.lightGray);
+        
+        jButtonALLModes.setBackground(new Color(240,240,240));
+        forceMode.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        comboMode.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_punchModeMouseClicked
+
+    private void comboModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboModeMouseClicked
+        // TODO add your handling code here:
+        comboMode.setBackground(Color.lightGray);
+        
+        jButtonALLModes.setBackground(new Color(240,240,240));
+        forceMode.setBackground(new Color(240,240,240));
+        timeMode.setBackground(new Color(240,240,240));
+        strenghMode.setBackground(new Color(240,240,240));
+        punchMode.setBackground(new Color(240,240,240));
+    }//GEN-LAST:event_comboModeMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;
@@ -321,10 +469,16 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     private javax.swing.JPanel SideBar;
     private javax.swing.JLabel SidebarButton;
     private javax.swing.JLabel SidebarButton1;
+    private javax.swing.JButton comboMode;
+    private javax.swing.JButton forceMode;
+    private javax.swing.JButton jButtonALLModes;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JButton punchMode;
+    private javax.swing.JButton strenghMode;
+    private javax.swing.JButton timeMode;
     // End of variables declaration//GEN-END:variables
 }

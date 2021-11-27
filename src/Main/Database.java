@@ -334,34 +334,50 @@ public class Database {
             return null;
         }
     }
-    
+  
     public String DisplayForceHistory(){
         String finalDisplay = "";
         String sql = "SELECT * " +
                      "FROM combocounter.forcemode";
-       finalDisplay = "index" + "\t" + "email)"  + "\t" +
-                                  "forceGoal"  + "\t" +
-                                   "totalForce" + "\t" +
-                                   "timerSec" + "\t" +
-                                   "timerMin"+ "\t" +
-                                   "timecreated"+ "\t" +
-                                   "datecreated"+ "\n";
         
         try (
              Statement stmt  = conn.createStatement();
              ResultSet rs    = stmt.executeQuery(sql)) {
            
-            
             // loop through the result set
             while (rs.next()) {
-                finalDisplay = finalDisplay + rs.getString("index") + "\t" + 
-                                   rs.getString("email")  + "\t" +
-                                   rs.getString("forceGoal")  + "\t" +
-                                   rs.getString("totalForce")  + "\t" +
-                                   rs.getString("timerSec")  + "\t" +
-                                   rs.getString("timerMin")  + "\t" +
-                                   rs.getString("timecreated")  + "\t" +
-                                   rs.getString("datecreated") + "\n";
+                finalDisplay = finalDisplay + "Force Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " Email: " + rs.getString("email")  + "\t" + 
+                                "\tForce Goal: " + rs.getString("forceGoal")  + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalForce")  + "\n\n";
+                    
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }
+    
+    public String DisplayTimeHistory(){
+        String finalDisplay = "";
+        String sql = "SELECT * " +
+                     "FROM combocounter.timedmode";
+        
+        try (
+             Statement stmt  = conn.createStatement();
+             ResultSet rs    = stmt.executeQuery(sql)) {
+           
+            // loop through the result set
+            while (rs.next()) {
+                finalDisplay = finalDisplay + "Time Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " Email: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalForce")  + "\n\n";
                     
             }
         } catch (SQLException ex) {
