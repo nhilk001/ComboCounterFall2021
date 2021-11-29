@@ -258,6 +258,11 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         ControlPanel.add(PlayPauseButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 30, 300, 290));
 
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+        });
         ControlPanel.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 80, 80));
 
         ResetButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/retryIcon.png"))); // NOI18N
@@ -376,6 +381,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
 
     // TODO
     private void ActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActivityButtonMouseClicked
+        Main.ActivityHistory();
         /*paused = true;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -408,6 +414,16 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
             Main.sidebarOpen = false ;
         }
     }//GEN-LAST:event_SidebarButtonMouseClicked
+
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        Main.db.insertPunchActivity(TOOL_TIP_TEXT_KEY, thresholdForce, SOMEBITS, originalMs, SOMEBITS, SOMEBITS, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+        
+        JOptionPane.showMessageDialog(null, 
+                              "Saved", 
+                              "Punch Mode", 
+                              JOptionPane.INFORMATION_MESSAGE);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SaveButtonMouseClicked
 
     private int[] fillArray(int[] array, int max) {
     Random randomGenerator = new Random();

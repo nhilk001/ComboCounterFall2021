@@ -205,6 +205,11 @@ public void update()
         jPanel3.add(ResetButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 270, 80, 80));
 
         SaveButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/saveIcon2.png"))); // NOI18N
+        SaveButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SaveButtonMouseClicked(evt);
+            }
+        });
         jPanel3.add(SaveButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 270, 80, 80));
 
         NextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/nextPlayerIcon.png"))); // NOI18N
@@ -330,6 +335,7 @@ public void update()
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         /*start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -420,6 +426,15 @@ public void update()
     private void Activity_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Activity_ButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Activity_ButtonActionPerformed
+
+    private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        // TODO add your handling code here:
+        Main.db.insertComboActivity(TOOL_TIP_TEXT_KEY, totalForce, timerSec, timerMin, playerNum, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
+        JOptionPane.showMessageDialog(null, 
+                              "Saved", 
+                              "Strength Mode", 
+                              JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_SaveButtonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
