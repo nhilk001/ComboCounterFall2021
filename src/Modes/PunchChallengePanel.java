@@ -2,6 +2,9 @@ package Modes;
 
 import Main.Main;
 import static java.lang.Thread.sleep;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -416,6 +419,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+
         Main.db.insertPunchActivity(TOOL_TIP_TEXT_KEY, thresholdForce, SOMEBITS, originalMs, SOMEBITS, SOMEBITS, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
         
         JOptionPane.showMessageDialog(null, 
@@ -423,6 +427,19 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
                               "Punch Mode", 
                               JOptionPane.INFORMATION_MESSAGE);
         // TODO add your handling code here:
+
+        DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
+        LocalDate localDate = LocalDate.now();
+        String inDate = localDate.format(date);
+
+        DateTimeFormatter time = DateTimeFormatter.ofPattern("HH:mm");
+        LocalTime localTime = LocalTime.now();
+        String inTime = localTime.format(time);
+        
+        //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
+        Main.db.insertPunchActivity(Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate);
+        
+
     }//GEN-LAST:event_SaveButtonMouseClicked
 
     private int[] fillArray(int[] array, int max) {

@@ -1073,7 +1073,7 @@ public class ComboModePanel extends javax.swing.JPanel {
         String inTime = localTime.format(time);
         
         //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
-        Main.db.insertComboActivity(Main.username , totalForce, timerSec, timerMin, 1, inTime, inDate);
+        Main.db.insertComboActivity(Main.username , totalForce, timerSec, timerMin, punchTracker, inTime, inDate);
         ResetComboPanelSetup();
     }//GEN-LAST:event_ComboModeSaveButtonMouseClicked
 

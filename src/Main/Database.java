@@ -156,8 +156,8 @@ public class Database {
     public int insertComboActivity(String email, int totalForce,
             int timerSec, int timerMin, int punchNum, String time, String date) {
 
-        String query = "INSERT INTO combomode (email, totalForce, timerSec, "
-                + "punchNum, timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
+        String query = "INSERT INTO combomode (email, totalForce, timerSec, timerMin, "
+                + "punchnum, timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
                 + timerSec + ", " + timerMin +", " + punchNum + ", '" + time +"', '" + date+ "');";
 
         try ( Statement stmt = conn.createStatement()) {
@@ -172,7 +172,7 @@ public class Database {
     public int insertStrengthActivity(String email, int totalForce,
             int timerSec, int timerMin, String time, String date) {
 
-        String query = "INSERT INTO combomode (email, totalForce, timerSec, "
+        String query = "INSERT INTO strengthmode (email, totalForce, timerSec, timerMin, "
                 + " timecreated, datecreated) VALUES ('" + email + "', " + totalForce + ", "
                 + timerSec + ", " + timerMin  + ", '" + time +"', '" + date+ "');";
 
@@ -188,7 +188,7 @@ public class Database {
     public int insertPunchActivity(String email, int threshold, int numValid, int numInvalid,
             int timerSec, int timerMin, String time, String date) {
 
-        String query = "INSERT INTO combomode (email, threshold, vaild, invalid, timerSec, "
+        String query = "INSERT INTO punchmode (email, threshold, valid, invalid, timerSec, timerMin, "
                 + " timecreated, datecreated) VALUES ('" + email + "', " + threshold + ", " + numValid+", " + numInvalid+", " 
                 + timerSec + ", " + timerMin  + ", '" + time +"', '" + date+ "');";
 
