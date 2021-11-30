@@ -419,13 +419,6 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
-
-        Main.db.insertPunchActivity(TOOL_TIP_TEXT_KEY, thresholdForce, SOMEBITS, originalMs, SOMEBITS, SOMEBITS, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-        
-        JOptionPane.showMessageDialog(null, 
-                              "Saved", 
-                              "Punch Mode", 
-                              JOptionPane.INFORMATION_MESSAGE);
         // TODO add your handling code here:
 
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
@@ -439,7 +432,10 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
         Main.db.insertPunchActivity(Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate);
         
-
+        JOptionPane.showMessageDialog(null, 
+            "Saved", 
+            "Punch Mode", 
+            JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
     private int[] fillArray(int[] array, int max) {

@@ -1,13 +1,20 @@
 package Modes;
 
+import Main.Activity;
 import Main.Main;
 import java.awt.Color;
 import static java.lang.Thread.sleep;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -168,7 +175,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         });
         SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 250, 530));
+        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 250, 530));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 56));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -368,7 +375,13 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_BackButton1MouseClicked
 
     private void jTextArea1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextArea1PropertyChange
-        jTextArea1.setText(Main.db.DisplayForceHistory() + Main.db.DisplayTimeHistory());
+        try {
+            jTextArea1.setText(Main.db.DisplayForceHistory(Main.username) + Main.db.DisplayTimeHistory(Main.username) 
+                    + Main.db.DisplayPunchHistory(Main.username) + Main.db.DisplayStrengthHistory(Main.username) +
+                            Main.db.DisplayComboHistory(Main.username));
+        } catch (SQLException ex) {
+            Logger.getLogger(ActivityHistoryPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jButtonALLModes.setBackground(Color.lightGray);
         
         forceMode.setBackground(new Color(240,240,240));
@@ -389,8 +402,14 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_forceModeActionPerformed
 
     private void jButtonALLModesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonALLModesMouseClicked
-        // TODO add your handling code here:
-        jTextArea1.setText(Main.db.DisplayForceHistory() + Main.db.DisplayTimeHistory());
+        try {
+            // TODO add your handling code here:
+            jTextArea1.setText(Main.db.DisplayForceHistory(Main.username) + Main.db.DisplayTimeHistory(Main.username) 
+                    + Main.db.DisplayPunchHistory(Main.username) + Main.db.DisplayStrengthHistory(Main.username) +
+                            Main.db.DisplayComboHistory(Main.username));
+        } catch (SQLException ex) {
+            Logger.getLogger(ActivityHistoryPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         jButtonALLModes.setBackground(Color.lightGray);
         
         forceMode.setBackground(new Color(240,240,240));
@@ -401,7 +420,11 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButtonALLModesMouseClicked
 
     private void forceModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_forceModeMouseClicked
-        jTextArea1.setText(Main.db.DisplayForceHistory());
+        try {
+            jTextArea1.setText(Main.db.DisplayForceHistory(Main.username));
+        } catch (SQLException ex) {
+            Logger.getLogger(ActivityHistoryPanel.class.getName()).log(Level.SEVERE, null, ex);
+        }
         forceMode.setBackground(Color.lightGray);
         
         jButtonALLModes.setBackground(new Color(240,240,240));
@@ -413,7 +436,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_forceModeMouseClicked
 
     private void timeModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_timeModeMouseClicked
-        jTextArea1.setText(Main.db.DisplayTimeHistory());
+        jTextArea1.setText(Main.db.DisplayTimeHistory(Main.username));
         timeMode.setBackground(Color.lightGray);
         
         jButtonALLModes.setBackground(new Color(240,240,240));
@@ -426,6 +449,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
 
     private void strenghModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_strenghModeMouseClicked
         // TODO add your handling code here:
+        jTextArea1.setText(Main.db.DisplayStrengthHistory(Main.username));
         strenghMode.setBackground(Color.lightGray);
         
         jButtonALLModes.setBackground(new Color(240,240,240));
@@ -437,6 +461,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
 
     private void punchModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_punchModeMouseClicked
         // TODO add your handling code here:
+        jTextArea1.setText(Main.db.DisplayPunchHistory(Main.username));
         punchMode.setBackground(Color.lightGray);
         
         jButtonALLModes.setBackground(new Color(240,240,240));
@@ -444,10 +469,12 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         timeMode.setBackground(new Color(240,240,240));
         strenghMode.setBackground(new Color(240,240,240));
         comboMode.setBackground(new Color(240,240,240));
+        
     }//GEN-LAST:event_punchModeMouseClicked
 
     private void comboModeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comboModeMouseClicked
         // TODO add your handling code here:
+        jTextArea1.setText(Main.db.DisplayComboHistory(Main.username));
         comboMode.setBackground(Color.lightGray);
         
         jButtonALLModes.setBackground(new Color(240,240,240));

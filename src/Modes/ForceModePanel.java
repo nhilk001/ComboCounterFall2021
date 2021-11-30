@@ -583,9 +583,9 @@ public final class ForceModePanel extends javax.swing.JPanel {
                 second, minute, inTime, inDate);
         
         JOptionPane.showMessageDialog(null, 
-                              "Saved", 
-                              "Force Mode", 
-                              JOptionPane.INFORMATION_MESSAGE);
+            "Saved", 
+            "Force Mode", 
+            JOptionPane.INFORMATION_MESSAGE);
         //TODO: remove createActivity
         //Main.createActivity(minute, 0, localTime, localDate, "Force Mode", totalForce, forceGoal);
     }//GEN-LAST:event_SaveButtonMouseClicked
