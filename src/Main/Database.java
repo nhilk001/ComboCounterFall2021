@@ -335,14 +335,17 @@ public class Database {
         }
     }
   
-    public String DisplayForceHistory(){
+    public String DisplayForceHistory(String email) throws SQLException{
         String finalDisplay = "";
-        String sql = "SELECT * " +
-                     "FROM combocounter.forcemode";
-        
-        try (
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)) {
+        String query = "SELECT * " +
+                     "FROM combocounter.forcemode WHERE email=? ;";
+       
+        try ( PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+//             Statement stmt  = conn.createStatement();
+//             ResultSet rs    = stmt.executeQuery(sql)) 
            
             // loop through the result set
             while (rs.next()) {
@@ -361,15 +364,15 @@ public class Database {
         return finalDisplay;
     }
     
-    public String DisplayTimeHistory(){
+    public String DisplayTimeHistory(String email){
         String finalDisplay = "";
-        String sql = "SELECT * " +
-                     "FROM combocounter.timedmode";
+        String query = "SELECT * " +
+                     "FROM combocounter.timedmode WHERE email=? ;";
         
-        try (
-             Statement stmt  = conn.createStatement();
-             ResultSet rs    = stmt.executeQuery(sql)) {
-           
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
             // loop through the result set
             while (rs.next()) {
                 finalDisplay = finalDisplay + "Time Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
@@ -384,5 +387,83 @@ public class Database {
             System.out.println(ex.getMessage());
         }
         return finalDisplay;
+    }   
+    
+    public String DisplayPunchHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.punchmode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Punch Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " Email: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "      Threshold Force: " + rs.getString("threshold")  + "\n"
+                                + "Valid Punches : " + rs.getString("valid") + "\n" 
+                                + "InValid Punches : " + rs.getString("invalid") + "\n\n" ;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
     }
+    
+    public String DisplayStrengthHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.strengthmode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Strength Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " Email: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalforce")  + "\n\n";
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }   
+    
+        public String DisplayComboHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.combomode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Combo Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " Email: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalforce")  +
+                                "Punch numbers : " + rs.getString("punchNum") + "\n\n";
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }   
 }

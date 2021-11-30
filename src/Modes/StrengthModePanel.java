@@ -431,14 +431,7 @@ public void update()
     }//GEN-LAST:event_Activity_ButtonActionPerformed
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
-
         // TODO add your handling code here:
-        Main.db.insertComboActivity(TOOL_TIP_TEXT_KEY, totalForce, timerSec, timerMin, playerNum, TOOL_TIP_TEXT_KEY, TOOL_TIP_TEXT_KEY);
-        JOptionPane.showMessageDialog(null, 
-                              "Saved", 
-                              "Strength Mode", 
-                              JOptionPane.INFORMATION_MESSAGE);
-
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
         String inDate = localDate.format(date);
@@ -448,8 +441,10 @@ public void update()
         String inTime = localTime.format(time);
         
         Main.db.insertStrengthActivity(Main.username , totalForce, timerSec, timerMin, inTime, inDate);
-        
-
+        JOptionPane.showMessageDialog(null, 
+                      "Saved", 
+                      "Strength Mode", 
+                      JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
 
