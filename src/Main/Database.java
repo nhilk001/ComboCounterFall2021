@@ -351,7 +351,7 @@ public class Database {
             while (rs.next()) {
                 finalDisplay = finalDisplay + "Force Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
                                 rs.getString("datecreated") + "\n" +
-                                " Email: " + rs.getString("email")  + "\t" + 
+                                " User: " + rs.getString("email")  + "\t" + 
                                 "\tForce Goal: " + rs.getString("forceGoal")  + 
                                 "\n" + " Time: " + rs.getString("timerMin") + " min " +
                                 rs.getString("timerSec") + " sec" + "\t"
@@ -377,10 +377,10 @@ public class Database {
             while (rs.next()) {
                 finalDisplay = finalDisplay + "Time Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
                                 rs.getString("datecreated") + "\n" +
-                                " Email: " + rs.getString("email")  + "\t" + 
+                                " User: " + rs.getString("email")  + "\t" + 
                                 "\n" + " Time: " + rs.getString("timerMin") + " min " +
                                 rs.getString("timerSec") + " sec" + "\t"
-                                + "          Total Force: " + rs.getString("totalForce")  + "\n\n";
+                                + "      Total Force: " + rs.getString("totalForce")  + "\n\n";
                     
             }
         } catch (SQLException ex) {
@@ -403,12 +403,12 @@ public class Database {
                 // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
                 finalDisplay = finalDisplay + "Punch Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
                                 rs.getString("datecreated") + "\n" +
-                                " Email: " + rs.getString("email")  + "\t" + 
+                                " User: " + rs.getString("email")  + "\t" + 
                                 "\n" + " Time: " + rs.getString("timerMin") + " min " +
                                 rs.getString("timerSec") + " sec" + "\t"
-                                + "      Threshold Force: " + rs.getString("threshold")  + "\n"
-                                + "Valid Punches : " + rs.getString("valid") + "\n" 
-                                + "InValid Punches : " + rs.getString("invalid") + "\n\n" ;
+                                + "         Threshold Force: " + rs.getString("threshold")  + "\n"
+                                + " Valid Punches : " + rs.getString("valid") + "\t" 
+                                + "         InValid Punches : " + rs.getString("invalid") + "\n\n" ;
             }
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -430,7 +430,7 @@ public class Database {
                 // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
                 finalDisplay = finalDisplay + "Strength Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
                                 rs.getString("datecreated") + "\n" +
-                                " Email: " + rs.getString("email")  + "\t" + 
+                                " User: " + rs.getString("email")  + "\t" + 
                                 "\n" + " Time: " + rs.getString("timerMin") + " min " +
                                 rs.getString("timerSec") + " sec" + "\t"
                                 + "          Total Force: " + rs.getString("totalforce")  + "\n\n";
@@ -455,10 +455,10 @@ public class Database {
                 // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
                 finalDisplay = finalDisplay + "Combo Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
                                 rs.getString("datecreated") + "\n" +
-                                " Email: " + rs.getString("email")  + "\t" + 
+                                " User: " + rs.getString("email")  + "\t" + 
                                 "\n" + " Time: " + rs.getString("timerMin") + " min " +
                                 rs.getString("timerSec") + " sec" + "\t"
-                                + "          Total Force: " + rs.getString("totalforce")  +
+                                + "Total Force: " + rs.getString("totalforce")  + "    " +
                                 "Punch numbers : " + rs.getString("punchNum") + "\n\n";
             }
         } catch (SQLException ex) {
