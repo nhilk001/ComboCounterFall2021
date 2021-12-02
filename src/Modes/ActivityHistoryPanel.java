@@ -25,9 +25,9 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
 
     // Declaring vars
 
-    boolean countDown = true;
-    boolean paused = true;
-    boolean start;
+//    boolean countDown = true;
+//    boolean paused = true;
+//    boolean start;
 
     public ActivityHistoryPanel() {
         initComponents();
@@ -175,7 +175,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         });
         SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 90, 250, 530));
+        add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 80, 250, 530));
 
         jPanel2.setBackground(new java.awt.Color(51, 51, 56));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -254,7 +254,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTextArea1);
 
-        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 650, 740));
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 150, 650, 810));
 
         jButtonALLModes.setText("All");
         jButtonALLModes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -353,7 +353,7 @@ public final class ActivityHistoryPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Settings_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Settings_ButtonMouseClicked
-        start = false;
+        boolean start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)", "Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
             Main.transitionToPage(3);
