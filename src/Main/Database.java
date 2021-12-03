@@ -225,7 +225,7 @@ public class Database {
                 String timeCreated = rs.getNString("timecreated");
                 String dateCreated = rs.getNString("datecreated");
                 //TODO correct activity object and line below
-                Activity act = new Activity(0, sec, timeCreated, dateCreated,
+                Activity act = new Activity(min, sec, timeCreated, dateCreated,
                         "Force Mode", totalForce, goalForce);
                 activities.add(act);
             }
