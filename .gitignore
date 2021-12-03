@@ -152,3 +152,4 @@ build/classes/Modes/TimedModePanel$7.class
 build/classes/Modes/TimedModePanel$8.class
 build/classes/Modes/TimedModePanel$9.class
 *.class
+/nbproject/private/
