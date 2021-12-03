@@ -1037,6 +1037,7 @@ public class ComboModePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         /*start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -1073,6 +1074,10 @@ public class ComboModePanel extends javax.swing.JPanel {
         
         //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
         Main.db.insertComboActivity(Main.username , totalForce, timerSec, timerMin, punchTracker, inTime, inDate);
+        JOptionPane.showMessageDialog(null, 
+              "Saved", 
+              "Combo Mode", 
+              JOptionPane.INFORMATION_MESSAGE);
         ResetComboPanelSetup();
     }//GEN-LAST:event_ComboModeSaveButtonMouseClicked
 

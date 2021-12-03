@@ -32,7 +32,7 @@ public final class ActivityModePanel extends javax.swing.JPanel {
     public ActivityModePanel(ArrayList<Activity> activityList) {
         initComponents();
         //this.activityList = Main.db.getForceActivities(Main.username);
-        update();
+        //update();
 
         // Setting states
         SideBar.setVisible(false);
@@ -60,6 +60,7 @@ public final class ActivityModePanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         SideBar = new javax.swing.JPanel();
+        jPanel1.setVisible(false);
         About_Button = new javax.swing.JButton();
         About_Button.setOpaque(false);
         About_Button.setContentAreaFilled(false);
@@ -190,7 +191,7 @@ public final class ActivityModePanel extends javax.swing.JPanel {
         });
         SideBar.add(Feedback_Button, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 320, 180, 60));
 
-        jPanel1.add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 80, -1, -1));
+        jPanel1.add(SideBar, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 80, -1, -1));
 
         jPanel3.setBackground(new java.awt.Color(51, 51, 56));
         jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -254,6 +255,11 @@ public final class ActivityModePanel extends javax.swing.JPanel {
         jTextArea1.setBorder(null);
         jTextArea1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTextArea1.setDisabledTextColor(new java.awt.Color(255, 255, 255));
+        jTextArea1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                jTextArea1PropertyChange(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTextArea1);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 320, 650, 640));
@@ -357,10 +363,10 @@ public final class ActivityModePanel extends javax.swing.JPanel {
 
     private void SidebarButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SidebarButton1MouseClicked
         if (Main.sidebarOpen == false) {
-            jPanel1.setVisible(true);
+            SideBar.setVisible(true);
             Main.sidebarOpen = true;
         } else if (Main.sidebarOpen == true) {
-            jPanel1.setVisible(false);
+            SideBar.setVisible(false);
             Main.sidebarOpen = false;
         }
     }//GEN-LAST:event_SidebarButton1MouseClicked
@@ -375,6 +381,11 @@ public final class ActivityModePanel extends javax.swing.JPanel {
         // you would like to browse it will then display that week.           //
         ////////////////////////////////////////////////////////////////////////
     }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jTextArea1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jTextArea1PropertyChange
+        jTextArea1.setText("OneTwoThree");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextArea1PropertyChange
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton About_Button;

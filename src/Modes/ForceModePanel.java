@@ -510,6 +510,7 @@ public final class ForceModePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_Feedback_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         /*start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -576,12 +577,17 @@ public final class ForceModePanel extends javax.swing.JPanel {
         DateTimeFormatter time = DateTimeFormatter.ofPattern("hh:mm a");
         LocalTime localTime = LocalTime.now();
         String inTime = localTime.format(time);
+        totalForce = Integer.parseInt(ForceGoal.getText());
         
         Main.db.insertForceActivity(Main.username , forceGoal, totalForce, 
                 second, minute, inTime, inDate);
+        
+        JOptionPane.showMessageDialog(null, 
+            "Saved", 
+            "Force Mode", 
+            JOptionPane.INFORMATION_MESSAGE);
         //TODO: remove createActivity
-        Main.createActivity(minute, 0, localTime, localDate, "Force Mode",
-                totalForce, forceGoal);
+        //Main.createActivity(minute, 0, localTime, localDate, "Force Mode", totalForce, forceGoal);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

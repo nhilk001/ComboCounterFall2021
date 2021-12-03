@@ -1,5 +1,6 @@
 package Main;
 
+import Modes.ActivityHistoryPanel;
 import Modes.Setup.ForceModeSetup;
 import Modes.TimedModePanel;
 import Modes.ComboModePanel;
@@ -119,6 +120,16 @@ public class Main {
     {
         Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Frame.setContentPane(new ActivityModePanel(activityList));
+        Frame.setSize(768,1024);
+        Frame.setResizable(false);
+        Frame.repaint();
+        Frame.revalidate();
+    }
+    
+    public static void ActivityHistory()
+    {
+        Frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Frame.setContentPane(new ActivityHistoryPanel());
         Frame.setSize(768,1024);
         Frame.setResizable(false);
         Frame.repaint();

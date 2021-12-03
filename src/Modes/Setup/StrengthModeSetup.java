@@ -649,6 +649,7 @@ public class StrengthModeSetup extends javax.swing.JPanel {
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         // TODO add your handling code here:
     }//GEN-LAST:event_Activity_ButtonMouseClicked
 

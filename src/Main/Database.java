@@ -33,9 +33,9 @@ public class Database {
     public Database() {
         try {
             //Class.forName("com.mysql.jdbc.Driver").newInstance();
-            String dbUrl = "jdbc:mysql://localhost/sys";
+            String dbUrl = "jdbc:mysql://localhost/combocounter";
             String user = "root";
-            String pass = "";
+            String pass = "@A1234567b";
             conn = DriverManager.getConnection(dbUrl, user, pass);
         } catch (Exception e) {
             System.out.println("SQLException: " + e.getMessage());
@@ -303,6 +303,8 @@ public class Database {
             return null;
         }
     }
+    
+    
     public ArrayList<Activity> getStrengthActivities(String email) {
         ArrayList<Activity> activities = new ArrayList(10);
         String query = "SELECT * FROM strengthmode WHERE email=? ;";
@@ -332,4 +334,136 @@ public class Database {
             return null;
         }
     }
+  
+    public String DisplayForceHistory(String email) throws SQLException{
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.forcemode WHERE email=? ;";
+       
+        try ( PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+//             Statement stmt  = conn.createStatement();
+//             ResultSet rs    = stmt.executeQuery(sql)) 
+           
+            // loop through the result set
+            while (rs.next()) {
+                finalDisplay = finalDisplay + "Force Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " User: " + rs.getString("email")  + "\t" + 
+                                "\tForce Goal: " + rs.getString("forceGoal")  + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalForce")  + "\n\n";
+                    
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }
+    
+    public String DisplayTimeHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.timedmode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                finalDisplay = finalDisplay + "Time Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " User: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "      Total Force: " + rs.getString("totalForce")  + "\n\n";
+                    
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }   
+    
+    public String DisplayPunchHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.punchmode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Punch Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " User: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "         Threshold Force: " + rs.getString("threshold")  + "\n"
+                                + " Valid Punches : " + rs.getString("valid") + "\t" 
+                                + "         InValid Punches : " + rs.getString("invalid") + "\n\n" ;
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }
+    
+    public String DisplayStrengthHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.strengthmode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Strength Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " User: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "          Total Force: " + rs.getString("totalforce")  + "\n\n";
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }   
+    
+        public String DisplayComboHistory(String email){
+        String finalDisplay = "";
+        String query = "SELECT * " +
+                     "FROM combocounter.combomode WHERE email=? ;";
+        
+        try (PreparedStatement stmt = conn.prepareStatement(query)){
+            stmt.setNString(1, email);
+            stmt.execute();
+            ResultSet rs = stmt.getResultSet();
+            // loop through the result set
+            while (rs.next()) {
+                // Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate
+                finalDisplay = finalDisplay + "Combo Mode: " + rs.getString("index") + "\t" + rs.getString("timecreated")  + "\t" +
+                                rs.getString("datecreated") + "\n" +
+                                " User: " + rs.getString("email")  + "\t" + 
+                                "\n" + " Time: " + rs.getString("timerMin") + " min " +
+                                rs.getString("timerSec") + " sec" + "\t"
+                                + "Total Force: " + rs.getString("totalforce")  + "    " +
+                                "Punch numbers : " + rs.getString("punchNum") + "\n\n";
+            }
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+        return finalDisplay;
+    }   
 }

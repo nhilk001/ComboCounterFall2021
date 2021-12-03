@@ -338,6 +338,7 @@ public void update()
     }//GEN-LAST:event_Profile_ButtonMouseClicked
 
     private void Activity_ButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Activity_ButtonMouseClicked
+        Main.ActivityHistory();
         /*start = false;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -430,6 +431,7 @@ public void update()
     }//GEN-LAST:event_Activity_ButtonActionPerformed
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        // TODO add your handling code here:
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
         String inDate = localDate.format(date);
@@ -439,7 +441,10 @@ public void update()
         String inTime = localTime.format(time);
         
         Main.db.insertStrengthActivity(Main.username , totalForce, timerSec, timerMin, inTime, inDate);
-        
+        JOptionPane.showMessageDialog(null, 
+                      "Saved", 
+                      "Strength Mode", 
+                      JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
 

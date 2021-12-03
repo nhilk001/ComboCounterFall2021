@@ -384,6 +384,7 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
 
     // TODO
     private void ActivityButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ActivityButtonMouseClicked
+        Main.ActivityHistory();
         /*paused = true;
         int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit? (Progress is not saved)","Exit", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
@@ -418,6 +419,8 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
     }//GEN-LAST:event_SidebarButtonMouseClicked
 
     private void SaveButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SaveButtonMouseClicked
+        // TODO add your handling code here:
+
         DateTimeFormatter date = DateTimeFormatter.ofPattern("uuuu/MM/dd");
         LocalDate localDate = LocalDate.now();
         String inDate = localDate.format(date);
@@ -429,6 +432,10 @@ public final class PunchChallengePanel extends javax.swing.JPanel {
         //Main.createActivity( timerMin, timerSec, inTime, inDate, "Combo Mode", totalForce, punchTracker, ComboModeSetup.punches );
         Main.db.insertPunchActivity(Main.username, thresholdForce, validPunches, invalidPunches ,seconds, minutes, inTime, inDate);
         
+        JOptionPane.showMessageDialog(null, 
+            "Saved", 
+            "Punch Mode", 
+            JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_SaveButtonMouseClicked
 
     private int[] fillArray(int[] array, int max) {
